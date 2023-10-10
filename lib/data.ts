@@ -1,4 +1,3 @@
-import { FaCrown } from "react-icons/fa";
 import { HiOutlineHome } from "react-icons/hi";
 import { BsDiagram3, BsBookmarks } from "react-icons/bs";
 import { AiOutlineTags } from "react-icons/ai";
@@ -8,11 +7,6 @@ import { PiGearSix } from "react-icons/pi";
 import { FiUsers, FiLogOut } from "react-icons/fi";
 
 export const navbarInfo = [
-    {
-        label: "Cantinho da Moda",
-        url: "/",
-        icon: FaCrown
-    },
     {
         label: "Dashboard",
         url: "/dashboard",
