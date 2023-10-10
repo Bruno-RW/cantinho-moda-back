@@ -2,8 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    @apply bg-gray-50;
+}
+
 body {
-    @apply w-full overflow-hidden bg-gray-50;
+    @apply w-full overflow-hidden;
 }
 
 .navbar-li {
@@ -35,4 +39,11 @@ body {
 
 header {
     width: calc(100% - 300px);
+
+    /* Remove "X" icon from search input */
+    [type="search"]::-webkit-search-cancel-button,
+    [type="search"]::-webkit-search-decoration {
+        -webkit-appearance: none;
+        appearance: none;
+    }   
 }
