@@ -7,10 +7,32 @@ body {
 }
 
 .navbar-li {
-    @apply relative w-[200%] ml-3.5 rounded-full list-none first-of-type:font-medium transition-transform duration-200
-    first-of-type:mb-8 first-of-type:pointer-events-none hover:bg-gray-50 hover:translate-x-3 hover:pl-4 hover:border;
+    @apply relative ml-3.5 rounded-full list-none border border-transparent
+  hover:bg-gray-50 hover:translate-x-3 hover:pl-4;
+
+    @media (min-height:624px) {
+        &:nth-child(7) {
+            margin-bottom: calc(100vh - 590px);
+        }
+    }
+
+    &:hover a::before {
+        @apply absolute -top-[51px] left-[195px] w-[50px] h-[50px] rounded-full pointer-events-none bg-transparent;
+        content: "";
+        box-shadow: 35px 35px 0 10px rgb(249 250 251);
+    }
+
+    &:hover a::after {
+        @apply absolute -bottom-[51px] left-[195px] w-[50px] h-[50px] rounded-full pointer-events-none bg-transparent;
+        content: "";
+        box-shadow: 35px -35px 0 10px rgb(249 250 251);
+    }
 }
 
 .navbar-link {
     @apply flex items-center relative text-gray-50 w-full gap-x-3.5 py-3.5 no-underline group-hover:text-blue-500;
+}
+
+header {
+    width: calc(100% - 300px);
 }
