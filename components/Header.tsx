@@ -1,22 +1,19 @@
-import { HiOutlineMenuAlt2 } from "react-icons/hi";
-import { HiOutlineMenuAlt3 } from "react-icons/hi";
+"use client";
 
-import Search from "./Search";
+import { twMerge } from "tailwind-merge";
+
+import { useNavbar } from "@/context/NavbarContext";
+
+import Search from "./header/Search";
+import UserAvatar from "./header/UserAvatar";
 
 const Header = () => {
+    const {isActive, toggleActive} = useNavbar();
+
     return (
-        <header className="absolute left-[300px] w-full transition duration-200 bg-gray-50">
-            <div className="topbar flex items-center justify-between w-full h-14 gap-x-2.5">
-                <button className="toggle">
-                    <HiOutlineMenuAlt2 size={28} />
-                </button>
-
-                <Search />
-                
-                <div className="user">
-
-                </div>
-            </div>
+        <header className={twMerge("flex items-center justify-between absolute left-96 w-full h-14 gap-x-2.5 transition-all bg-gray-50", isActive && "left-[150px]" )}>
+            <Search />
+            <UserAvatar />
         </header>
     );
 }
