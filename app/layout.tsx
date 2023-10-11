@@ -19,9 +19,13 @@ export default function RootLayout( {children}: {children: React.ReactNode} ) {
     <html lang="pt-br">
       <body className={font.className} suppressHydrationWarning={true}>
         <ContextProvider>
-          <Navbar />
-          <Header />
-          {children}
+          <main className="flex">
+            <Navbar />
+            <section className="w-full my-2 mx-3">
+              <Header />
+              {children}
+            </section>
+          </main>
         </ContextProvider>
       </body>
     </html>
