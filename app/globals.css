@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Remove "X" icon from search input */
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+}   
+
+
+/* ----- BASE ----- */
 :root {
     @apply bg-gray-50;
 }
@@ -10,38 +19,29 @@ body {
     @apply w-full overflow-hidden;
 }
 
+
+/* ----- NAVBAR ----- */
 .navbar-li {
     @apply relative ml-3.5 rounded-l-full list-none border border-transparent transition-transform 
   hover:bg-gray-50 hover:translate-x-3 hover:pl-4 hover:transition-none;
-
-    @media (min-height:624px) {
-        &:nth-child(7) {
-            margin-bottom: calc(100vh - 590px);
-        }
-    }
-    
-    &:hover a::before {
-        @apply fixed -top-[51px] right-[11px] content-[""] w-[50px] h-[50px] rounded-full pointer-events-none bg-transparent ;
-        box-shadow: 35px 35px 0 10px rgb(249 250 251);
-    }
-    
-    &:hover a::after {
-        @apply absolute -bottom-[51px] right-[11px] content-[""] w-[50px] h-[50px] rounded-full pointer-events-none bg-transparent;
-        box-shadow: 35px -35px 0 10px rgb(249 250 251);
-    }
 }
 
-.navbar-link {
-    @apply flex items-center relative text-gray-50 w-full gap-x-3.5 py-3.5 no-underline group-hover:text-blue-500;
+.navbar-li:hover .link-before {
+    box-shadow: 35px 35px 0 10px rgb(249 250 251);
 }
 
-header {
-    width: calc(100% - 300px);
+.navbar-li:hover .link-after {
+    box-shadow: 35px -35px 0 10px rgb(249 250 251);
+}
 
-    /* Remove "X" icon from search input */
-    [type="search"]::-webkit-search-cancel-button,
-    [type="search"]::-webkit-search-decoration {
-        -webkit-appearance: none;
-        appearance: none;
-    }   
+
+/* ----- HEADER ----- */
+
+
+
+/* Smartphone */
+@media (min-height:624px) {
+    .navbar-li:nth-child(7) {
+        margin-bottom: calc(100vh - 610px);
+    }
 }
