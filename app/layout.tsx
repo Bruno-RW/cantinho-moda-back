@@ -17,15 +17,18 @@ export const metadata: Metadata = {
 export default function RootLayout( {children}: {children: React.ReactNode} ) {
   return (
     <html lang="pt-br">
-      <body className={font.className} suppressHydrationWarning={true}>
+      <body className="overflow-hidden" suppressHydrationWarning={true}>
         <ContextProvider>
-          <main className="flex">
+
+          <main className="flex bg-gray-50 dark:bg-neutral-900">
             <Navbar />
+            
             <section className="w-full my-2 mx-3">
               <Header />
               {children}
             </section>
           </main>
+
         </ContextProvider>
       </body>
     </html>

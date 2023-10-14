@@ -5,35 +5,38 @@
 /* Remove "X" icon from search input */
 [type="search"]::-webkit-search-cancel-button,
 [type="search"]::-webkit-search-decoration {
-    -webkit-appearance: none;
-    appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
 }   
 
 
 /* ----- BASE ----- */
-:root {
-    @apply bg-gray-50;
-}
-
-body {
-    @apply w-full overflow-hidden;
+.bg-border{
+  @apply border border-gray-200 bg-white shadow-lg backdrop-blur-xl backdrop-saturate-200 
+  dark:text-white dark:border-neutral-700 dark:bg-neutral-800 dark:shadow-md dark:shadow-neutral-700;
 }
 
 
 /* ----- NAVBAR ----- */
 .navbar-li {
-    @apply relative ml-3.5 rounded-l-full list-none border border-transparent transition-transform 
-  hover:bg-gray-50 hover:translate-x-3 hover:pl-4 hover:transition-none;
+  @apply relative ml-3.5 rounded-l-full list-none border border-transparent transition-transform 
+  hover:bg-gray-50 hover:translate-x-3 hover:pl-4 hover:transition-none 
+  dark:hover:bg-neutral-900;
 }
 
 .navbar-li:hover .link-before {
-    box-shadow: 35px 35px 0 10px rgb(249 250 251);
+  box-shadow: 35px 35px 0 10px rgb(249 250 251);
+}
+html.dark .navbar-li:hover .link-before {
+  box-shadow: 35px 35px 0 10px rgb(23 23 23);
 }
 
 .navbar-li:hover .link-after {
-    box-shadow: 35px -35px 0 10px rgb(249 250 251);
+  box-shadow: 35px -35px 0 10px rgb(249 250 251);
 }
-
+html.dark .navbar-li:hover .link-after {
+  box-shadow: 35px -35px 0 10px rgb(23 23 23);
+}
 
 /* ----- HEADER ----- */
 
@@ -41,7 +44,7 @@ body {
 
 /* Smartphone */
 @media (min-height:624px) {
-    .navbar-li:nth-child(7) {
-        margin-bottom: calc(100vh - 610px);
-    }
+  .navbar-li:nth-child(7) {
+    margin-bottom: calc(100vh - 610px);
+  }
 }
