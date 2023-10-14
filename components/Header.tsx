@@ -1,7 +1,6 @@
 
 import NavbarButton from "./header/NavbarButton";
 import Search from "./header/Search";
-import ThemeSwitch from "./header/ThemeSwitch";
 import UserAvatar from "./header/UserAvatar";
 
 const Header = () => {
@@ -10,7 +9,6 @@ const Header = () => {
         <header className="flex items-center justify-between z-40 w-full h-14 transition-all">
             <NavbarButton />
             <Search />
-            <ThemeSwitch />
             <UserAvatar />
         </header>
     );
