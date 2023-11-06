@@ -1,11 +1,13 @@
-import './globals.css';
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 
-import ContextProvider from '@/context/ContextProvider';
+import ContextProvider from '@/providers/ContextProvider';
+import ToastProvider from '@/providers/ToastProvider';
 
-import Header from '@/components/Header';
-import Navbar from '@/components/Navbar';
+import Header from "@/components/Header";
+import Navbar from "@/components/Navbar";
+
+import './globals.css';
 
 const font = Roboto({ subsets: ["latin"], display: "swap", weight: ["300", "400", "500", "700"] });
 
@@ -17,18 +19,18 @@ export const metadata: Metadata = {
 export default function RootLayout( {children}: {children: React.ReactNode} ) {
   return (
     <html lang="pt-br">
-      <body className="overflow-hidden" suppressHydrationWarning={true}>
+      <body className={font.className} suppressHydrationWarning={true}>
         <ContextProvider>
-
-          <main className="flex bg-gray-50 dark:bg-neutral-900">
+          <ToastProvider />
+          <div className="flex relative h-screen bg-gray-50 dark:bg-neutral-900">
             <Navbar />
-            
-            <section className="w-full my-2 mx-3">
+            <main className="flex flex-col w-full gap-y-3 my-2 mx-3">
               <Header />
-              {children}
-            </section>
-          </main>
-
+              <section className="mx-5">
+                {children}
+              </section>
+            </main>
+          </div>
         </ContextProvider>
       </body>
     </html>
