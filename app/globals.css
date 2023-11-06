@@ -11,9 +11,30 @@
 
 
 /* ----- BASE ----- */
-.bg-border{
-  @apply border border-gray-200 bg-white shadow-lg backdrop-blur-xl backdrop-saturate-200 
+h1 {
+  @apply text-5xl lg:text-6xl font-bold text-[#222] mb-5 break-all sm:break-normal dark:text-gray-50;
+}
+h2 {
+  @apply text-[46px] font-bold text-[#222] mb-5 break-all sm:break-normal dark:text-gray-50;
+}
+h3 {
+  @apply text-xl font-semibold text-[#222] mb-4 break-all sm:break-normal dark:text-gray-50;
+}
+
+.section-p1 {
+  @apply px-5 sm:px-10 lg:px-20 py-10;
+}
+.section-m1 {
+  @apply my-10;
+}
+
+.bg-border {
+  @apply text-black/70 border border-gray-200 bg-white shadow-lg backdrop-blur-xl backdrop-saturate-200 
   dark:text-white dark:border-neutral-700 dark:bg-neutral-800 dark:shadow-md dark:shadow-neutral-700;
+}
+
+.borderBlack {
+  @apply border border-black/20 focus:border-black/50;
 }
 
 
@@ -37,9 +58,6 @@ html.dark .navbar-li:hover .link-before {
 html.dark .navbar-li:hover .link-after {
   box-shadow: 35px -35px 0 10px rgb(23 23 23);
 }
-
-/* ----- HEADER ----- */
-
 
 
 /* Smartphone */
