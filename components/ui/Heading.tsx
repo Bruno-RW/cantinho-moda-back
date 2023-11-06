@@ -15,5 +15,5 @@ const Heading: React.FC<HeadingProps> = ({ title, subtitle, titleClass, subtitle
       <h2 className={cn("text-lg font-medium text-black/50 dark:font-normal dark:text-white/50", subtitleClass)}>{subtitle}</h2>
     </div>
   );
-};
+}
 export default Heading;
