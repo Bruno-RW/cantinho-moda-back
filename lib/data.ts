@@ -9,7 +9,7 @@ import { FiUsers, FiLogOut } from "react-icons/fi";
 export const navbarInfo = [
     {
         label: "Dashboard",
-        url: "/dashboard",
+        url: "/",
         icon: HiOutlineHome
     },
     {
