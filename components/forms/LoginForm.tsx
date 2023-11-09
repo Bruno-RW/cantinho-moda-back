@@ -21,7 +21,7 @@ const LoginForm = () => {
 
   const submitLabel  = (isLoading ? "Signing in..." : "Sign in")
 
-  const { handleSubmit, register, formState: {errors} } = useForm<newLoginFormData>({
+  const { handleSubmit, register, reset, formState: {errors} } = useForm<newLoginFormData>({
     resolver: zodResolver(newLoginFormSchema),
     defaultValues: {
       email: "",
@@ -51,6 +51,7 @@ const LoginForm = () => {
       toast.error("Something went wrong");
 
     } finally {
+      reset();
       setIsLoading(false);
     }
   };
@@ -84,8 +85,9 @@ const LoginForm = () => {
         <Link color="primary" href="/forgot-password" size="sm">Forgot password?</Link>
       </div>
 
-      <Button className={cn("text-gray-50 outline-[#0664CF] bg-blue-600 dark:bg-blue-500/80", isLoading && "bg-blue-600/70 dark:bg-blue-500/40")}
+      <Button className={cn(isLoading && "bg-blue-600/70 dark:bg-blue-500/40")}
         type="submit"
+        variant="blue"
         isLoading={isLoading}
       >
         {submitLabel}
