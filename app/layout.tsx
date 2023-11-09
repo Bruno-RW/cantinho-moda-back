@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 
 import ContextProvider from '@/providers/ContextProvider';
-import ToastProvider from '@/providers/ToastProvider';
 
 import './globals.css';
 
@@ -18,7 +17,6 @@ export default function RootLayout( {children}: {children: React.ReactNode} ) {
     <html lang="pt-br">
       <body className={font.className} suppressHydrationWarning={true}>
         <ContextProvider>
-          <ToastProvider />
           <div className="flex relative h-screen bg-gray-50 dark:bg-neutral-900">
             {children}
           </div>
