@@ -17,7 +17,7 @@ export default function RootLayout( {children}: {children: React.ReactNode} ) {
     <html lang="pt-br">
       <body className={font.className} suppressHydrationWarning={true}>
         <ContextProvider>
-          <div className="flex relative h-screen bg-gray-50 dark:bg-neutral-900">
+          <div className="flex relative w-screen h-screen overflow-hidden bg-gray-50 dark:bg-neutral-900">
             {children}
           </div>
         </ContextProvider>
