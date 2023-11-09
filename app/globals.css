@@ -29,6 +29,10 @@ h3 {
 }
 
 .bg-border {
+  @apply text-black/70 border border-gray-200 bg-white
+  dark:text-white dark:border-neutral-700 dark:bg-neutral-800;
+}
+.bg-border-shadow {
   @apply text-black/70 border border-gray-200 bg-white shadow-lg backdrop-blur-xl backdrop-saturate-200 
   dark:text-white dark:border-neutral-700 dark:bg-neutral-800 dark:shadow-md dark:shadow-neutral-700;
 }
@@ -63,6 +67,6 @@ html.dark .navbar-li:hover .link-after {
 /* Smartphone */
 @media (min-height:624px) {
   .navbar-li:nth-child(7) {
-    margin-bottom: calc(100vh - 610px);
+    margin-bottom: calc(100vh - 620px);
   }
 }

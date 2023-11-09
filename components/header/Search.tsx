@@ -3,7 +3,7 @@ import { GoSearch } from "react-icons/go";
 const Search = () => {
   return (
     <div className="relative group">
-      <input className="bg-border text-black/80 w-96 h-10 px-4 rounded-2xl outline-none transition-all dark:text-neutral-100 dark:placeholder:text-neutral-300"
+      <input className="bg-border-shadow text-black/80 w-96 h-10 px-4 rounded-2xl outline-none transition-all dark:text-neutral-100 dark:placeholder:text-neutral-300"
         placeholder="Type to search..."
         type="search"
         name="search"
