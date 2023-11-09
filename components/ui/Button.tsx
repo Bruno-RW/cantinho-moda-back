@@ -17,21 +17,21 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
   type = "button",
   ...props
 }, ref) => {
-  const elementClass = "bg-border h-10 rounded-lg transition active:scale-95 focus:outline focus:outline-2 focus:outline-offset-4";
+  const elementClass = "bg-border h-10 p-2 rounded-lg transition active:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4";
   const divClass     = "flex items-center justify-center gap-x-2";
   const loadingClass = "h-5 w-5 animate-spin rounded-full border-b-2 border-white";
 
   return (
     <>
       {href ? (
-        <Link className={cn(elementClass, "p-2", className)} href={href}>
+        <Link className={cn(elementClass, isLoading && "active:scale-100 transition-none", className)} href={href}>
           <div className={divClass}>
             {isLoading && (<div className={loadingClass} />)}
             {children}
           </div>
         </Link>
       ) : (
-        <button className={cn(elementClass, className)}
+        <button className={cn(elementClass, isLoading && "active:scale-100 transition-none", className)}
           {...props}
           disabled={disabled || isLoading}
           ref={ref}
