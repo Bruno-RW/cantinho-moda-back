@@ -7,9 +7,12 @@ import { cn } from "@/lib/utils";
 import { navbarInfo } from "@/lib/data";
 
 import { useNavbar } from "@/context/NavbarContext";
+import { signOut } from "next-auth/react";
 
 const Navbar = () => {
   const { isActive } = useNavbar();
+
+  const onClick = (item: any) => { if (item.signOut) signOut() };
 
   return (
     <nav className={cn("w-72 h-screen overflow-hidden transition-all bg-blue-600 dark:bg-blue-500/80", isActive && "w-[60px] active")}>
@@ -20,7 +23,7 @@ const Navbar = () => {
 
       <ul className="w-full">
         {navbarInfo.map((item, key) => (
-          <li className={cn("navbar-li group", isActive && "hover:translate-x-0 hover:pl-2 hover:ml-2")} key={key}>
+          <li className={cn("navbar-li group", isActive && "hover:translate-x-0 hover:pl-2 hover:ml-2")} key={key} onClick={() => onClick(item)}>
             <Link className="flex items-center relative text-gray-50 w-full gap-x-3.5 py-3.5 no-underline group-hover:text-blue-600 dark:text-neutral-50 dark:group-hover:text-blue-500/80" href={item.url}>
 
               <span className={cn("link-before absolute -top-[51px] right-[11px] content-[''] w-[50px] h-[50px] rounded-full pointer-events-none bg-transparent", isActive && "-right-[1px]")} />

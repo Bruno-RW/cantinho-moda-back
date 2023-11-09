@@ -49,7 +49,8 @@ export const navbarInfo = [
     }, 
     {
         label: "Log Out",
-        url: "/logout",
-        icon: FiLogOut
+        url: "#",
+        icon: FiLogOut,
+        signOut: true
     }, 
 ] as const;
