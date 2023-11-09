@@ -1,9 +1,25 @@
-import { forwardRef } from "react";
+import { cva, VariantProps } from "class-variance-authority";
+import React, { forwardRef } from "react";
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+const buttonStyles = cva(
+  "h-10 p-2 rounded-lg transition-transform-opacity active:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4",
+  {
+    variants: {
+      variant: {
+        default : "bg-border",
+        blue: "text-gray-50 outline-[#0664CF] bg-blue-600 dark:bg-blue-500/80",
+      },
+      defaultVariants: { 
+        variant: "default"
+      }
+    }
+  }
+);
+
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonStyles> {
   isLoading?: boolean;
   href?: string;
 }
@@ -14,31 +30,28 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
   disabled,
   isLoading,
   href,
+  variant="default",
   type = "button",
   ...props
 }, ref) => {
-  const elementClass = "bg-border h-10 p-2 rounded-lg transition active:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4";
-  const divClass     = "flex items-center justify-center gap-x-2";
-  const loadingClass = "h-5 w-5 animate-spin rounded-full border-b-2 border-white";
-
   return (
     <>
       {href ? (
-        <Link className={cn(elementClass, isLoading && "active:scale-100 transition-none", className)} href={href}>
-          <div className={divClass}>
-            {isLoading && (<div className={loadingClass} />)}
+        <Link className={cn(buttonStyles({ variant }), isLoading && "active:scale-100 transition-none", className)} href={href}>
+          <div className="flex items-center justify-center gap-x-2">
+            {isLoading && (<div className="h-5 w-5 animate-spin rounded-full border-b-2 border-white" />)}
             {children}
           </div>
         </Link>
       ) : (
-        <button className={cn(elementClass, isLoading && "active:scale-100 transition-none", className)}
+        <button className={cn(buttonStyles({ variant }), isLoading && "active:scale-100 transition-none", className)}
           {...props}
           disabled={disabled || isLoading}
           ref={ref}
           type={type}
         >
-          <div className={divClass}>
-            {isLoading && (<div className={loadingClass} />)}
+          <div className="flex items-center justify-center gap-x-2">
+            {isLoading && (<div className="h-5 w-5 animate-spin rounded-full border-b-2 border-white" />)}
             {children}
           </div>
         </button>
