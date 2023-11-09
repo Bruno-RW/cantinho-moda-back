@@ -136,7 +136,7 @@ const NewUserForm: React.FC<NewUserFormProps> = ({ initialData }) => {
           </div>
         </div>
 
-        <Button className={cn(isLoading && "bg-blue-600/70 dark:bg-blue-500/40")} type="submit" variant="blue" isLoading={isLoading}>{submitLabel}</Button>
+        <Button className={cn("w-1/4", isLoading && "bg-blue-600/70 dark:bg-blue-500/40")} type="submit" variant="blue" isLoading={isLoading}>{submitLabel}</Button>
       </form>
     </>
   );
