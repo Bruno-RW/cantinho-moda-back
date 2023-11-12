@@ -21,6 +21,11 @@ const LoginForm = () => {
 
   const submitLabel  = (isLoading ? "Signing in..." : "Sign in")
 
+  const iconStyle = {
+    className: "self-center text-default-400",
+    size: 20
+  } as const;
+
   const { handleSubmit, register, reset, formState: {errors} } = useForm<newLoginFormData>({
     resolver: zodResolver(newLoginFormSchema),
     defaultValues: {
@@ -60,7 +65,7 @@ const LoginForm = () => {
     <form className="flex flex-col w-full py-3" onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col gap-y-3 mb-[18px]">
         <div className="flex flex-col gap-y-1">
-          <Input endContent={<FaEnvelope className="text-default-400" size={20} />}
+          <Input endContent={<FaEnvelope {...iconStyle} />}
             {...register("email")}
             name="email"
             label="Email"
@@ -72,7 +77,7 @@ const LoginForm = () => {
         </div>
 
         <div className="flex flex-col gap-y-1">
-          <Input endContent={<FaLock className="text-default-400" size={20} />}
+          <Input endContent={<FaLock {...iconStyle} />}
             {...register("password")}
             type="password"
             name="password"

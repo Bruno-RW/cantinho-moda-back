@@ -43,7 +43,7 @@ const NewUserForm: React.FC<NewUserFormProps> = ({ initialData }) => {
   const submitLabel  = initialData ? (isLoading ? "Saving..." : "Save") : (isLoading ? "Creating..." : "Create");
   
   const iconStyle = {
-    className: "text-default-400",
+    className: "self-center text-default-400",
     size: 20
   } as const;
 
