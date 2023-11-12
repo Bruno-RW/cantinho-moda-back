@@ -85,7 +85,7 @@ const NewUserForm: React.FC<NewUserFormProps> = ({ initialData }) => {
           <div className="flex flex-col gap-y-1 w-full">
             <Input endContent={<FiUser {...iconStyle} />}
               {...register("fullName")}
-              label="Full name"
+              label="Name"
               variant="bordered"
               autoFocus
             />
@@ -95,7 +95,7 @@ const NewUserForm: React.FC<NewUserFormProps> = ({ initialData }) => {
           <div className="flex flex-col gap-y-1 w-1/2">
             <Select
               {...register("type")}
-              label="User type"
+              label="Type"
               variant="bordered"
               items={userTypes}
             >
