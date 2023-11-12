@@ -1,6 +1,6 @@
 "use client";
 
-import { Checkbox, Input, Link } from "@nextui-org/react";
+import { Input } from "@nextui-org/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FaEnvelope, FaLock } from "react-icons/fa";
 import { useRouter } from "next/navigation";
@@ -58,31 +58,26 @@ const LoginForm = () => {
 
   return (
     <form className="flex flex-col w-full py-3" onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex flex-col gap-y-3 mb-1">
-        <>
+      <div className="flex flex-col gap-y-3 mb-[18px]">
+        <div className="flex flex-col gap-y-1">
           <Input endContent={<FaEnvelope className="text-default-400" size={20} />}
             {...register("email")}
             label="Email"
             variant="bordered"
             autoFocus
           />
-          {errors.email && <ErrorMessage message={errors.email.message} />}
-        </>
+          {errors.email && <ErrorMessage className="ml-2" message={errors.email.message} />}
+        </div>
 
-        <>
+        <div className="flex flex-col gap-y-1">
           <Input endContent={<FaLock className="text-default-400" size={20} />}
             {...register("password")}
             type="password"
             label="Password"
             variant="bordered"
           />
-          {errors.password && <ErrorMessage message={errors.password.message} />}
-        </>
-      </div>
-
-      <div className="flex justify-between mb-[18px] py-2 px-1">
-        <Checkbox classNames={{label: "text-small"}} defaultSelected>Remember me</Checkbox>
-        <Link color="primary" href="/forgot-password" size="sm">Forgot password?</Link>
+          {errors.password && <ErrorMessage className="ml-2" message={errors.password.message} />}
+        </div>
       </div>
 
       <Button className={cn(isLoading && "bg-blue-600/70 dark:bg-blue-500/40")}
