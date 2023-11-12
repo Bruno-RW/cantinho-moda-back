@@ -82,17 +82,17 @@ const NewUserForm: React.FC<NewUserFormProps> = ({ initialData }) => {
 
       <form className="flex flex-col w-full gap-y-3" onSubmit={handleSubmit(onSubmit)}>
         <div className="flex gap-x-3">
-          <div className="w-full">
+          <div className="flex flex-col gap-y-1 w-full">
             <Input endContent={<FiUser {...iconStyle} />}
               {...register("fullName")}
               label="Full name"
               variant="bordered"
               autoFocus
             />
-            {errors.fullName && <ErrorMessage message={errors.fullName.message} />}
+            {errors.fullName && <ErrorMessage className="ml-2" message={errors.fullName.message} />}
           </div>
 
-          <div className="w-1/2">
+          <div className="flex flex-col gap-y-1 w-1/2">
             <Select
               {...register("type")}
               label="User type"
@@ -101,38 +101,38 @@ const NewUserForm: React.FC<NewUserFormProps> = ({ initialData }) => {
             >
               {type => <SelectItem key={type.value}>{type.label}</SelectItem>}
             </Select>
-            {errors.type && <ErrorMessage message={errors.type.message} />}
+            {errors.type && <ErrorMessage className="ml-2" message={errors.type.message} />}
           </div>
         </div>
 
-        <div>
+        <div className="flex flex-col gap-y-1">
           <Input endContent={<FaEnvelope {...iconStyle} />}
             {...register("email")}
             label="Email"
             variant="bordered"
           />
-          {errors.email && <ErrorMessage message={errors.email.message} />}
+          {errors.email && <ErrorMessage className="ml-2" message={errors.email.message} />}
         </div>
 
         <div className="flex gap-x-3">
-          <div className="w-1/2">
+          <div className="flex flex-col gap-y-1 w-1/2">
             <Input endContent={<FaUnlock {...iconStyle} />}
               {...register("password")}
               type="password"
               label="Password"
               variant="bordered"
             />
-            {errors.password && <ErrorMessage message={errors.password.message} />}
+            {errors.password && <ErrorMessage className="ml-2" message={errors.password.message} />}
           </div>
 
-          <div className="w-1/2">
+          <div className="flex flex-col gap-y-1 w-1/2">
             <Input endContent={<FaLock {...iconStyle} />}
               {...register("confirmPassword")}
               type="password"
               label="Confirm password"
               variant="bordered"
             />
-            {errors.confirmPassword && <ErrorMessage message={errors.confirmPassword.message} />}
+            {errors.confirmPassword && <ErrorMessage className="ml-2" message={errors.confirmPassword.message} />}
           </div>
         </div>
 
