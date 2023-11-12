@@ -1,6 +1,8 @@
-interface ErrorMessageProps { message?: string };
+import { cn } from "@/lib/utils";
 
-const ErrorMessage: React.FC<ErrorMessageProps> = ({ message }) => {
-  return <span className="text-red-500">{message}</span>;
+interface ErrorMessageProps { className?: string; message?: string  };
+
+const ErrorMessage: React.FC<ErrorMessageProps> = ({ className, message }) => {
+  return <span className={cn("text-red-500", className)}>{message}</span>;
 }
 export default ErrorMessage;
