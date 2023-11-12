@@ -62,8 +62,10 @@ const LoginForm = () => {
         <div className="flex flex-col gap-y-1">
           <Input endContent={<FaEnvelope className="text-default-400" size={20} />}
             {...register("email")}
+            name="email"
             label="Email"
             variant="bordered"
+            autoComplete="email"
             autoFocus
           />
           {errors.email && <ErrorMessage className="ml-2" message={errors.email.message} />}
@@ -73,6 +75,7 @@ const LoginForm = () => {
           <Input endContent={<FaLock className="text-default-400" size={20} />}
             {...register("password")}
             type="password"
+            name="password"
             label="Password"
             variant="bordered"
           />
