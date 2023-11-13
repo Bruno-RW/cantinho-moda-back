@@ -14,11 +14,12 @@ import { FiUser} from "react-icons/fi";
 import { User } from "@prisma/client";
 
 import { newUserFormData, newUserFormSchema } from "@/lib/types/forms";
+import { useTheme } from "@/context/ThemeContext";
+import { cn } from "@/lib/utils";
 
 import ErrorMessage from "@/components/forms/ErrorMessage";
-import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
-import { cn } from "@/lib/utils";
+import Button from "@/components/ui/Button";
 
 type userTypesValues = {
   label: "Admin" | "Master",
@@ -35,6 +36,7 @@ interface NewUserFormProps { initialData?: User | null };
 const NewUserForm: React.FC<NewUserFormProps> = ({ initialData }) => {
   const router = useRouter();
   const params = useParams();
+  const { theme } = useTheme();
   const [isLoading, setIsLoading] = useState(false);
 
   const title        = initialData ? "Edit user" : "Create user";
@@ -42,6 +44,14 @@ const NewUserForm: React.FC<NewUserFormProps> = ({ initialData }) => {
   const toastMessage = initialData ? "User updated" : "User created";
   const submitLabel  = initialData ? (isLoading ? "Saving..." : "Save") : (isLoading ? "Creating..." : "Create");
   
+  const toastStyle = {
+    style: {
+      color: theme === "light" ? "black" : "white",
+      border: "1px solid rgb(0 0 0 / 0.1)",
+      backgroundColor: theme === "light" ? "white" : "#262626",
+    }
+  } as const;
+
   const iconStyle = {
     className: "self-center text-default-400",
     size: 20
@@ -66,10 +76,10 @@ const NewUserForm: React.FC<NewUserFormProps> = ({ initialData }) => {
       else await axios.post("/api/users/new", data);
 
       router.push("/users");
-      toast.success(toastMessage);
+      toast.success(toastMessage, toastStyle);
 
     } catch (error: any) {
-      toast.error(error.response.data);
+      toast.error(error.response.data, toastStyle);
 
     } finally {
       setIsLoading(false);

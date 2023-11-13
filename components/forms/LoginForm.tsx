@@ -10,6 +10,7 @@ import toast from "react-hot-toast";
 import { useState } from "react";
 
 import { newLoginFormData, newLoginFormSchema } from "@/lib/types/forms";
+import { useTheme } from "@/context/ThemeContext";
 import { cn } from "@/lib/utils";
 
 import ErrorMessage from "@/components/forms/ErrorMessage";
@@ -17,14 +18,23 @@ import Button from "@/components/ui/Button";
 
 const LoginForm = () => {
   const router = useRouter();
+  const { theme } = useTheme();
   const [isLoading, setIsLoading] = useState(false);
 
-  const submitLabel  = (isLoading ? "Signing in..." : "Sign in")
+  const toastStyle = {
+    style: {
+      color: theme === "light" ? "black" : "white",
+      border: "1px solid rgb(0 0 0 / 0.1)",
+      backgroundColor: theme === "light" ? "white" : "#262626",
+    }
+  } as const;
 
   const iconStyle = {
     className: "self-center text-default-400",
     size: 20
   } as const;
+  
+  const submitLabel  = (isLoading ? "Signing in..." : "Sign in")
 
   const { handleSubmit, register, reset, formState: {errors} } = useForm<newLoginFormData>({
     resolver: zodResolver(newLoginFormSchema),
@@ -35,6 +45,7 @@ const LoginForm = () => {
     },
   });
 
+  let isUserError = false;
   const onSubmit = async (data: newLoginFormData) => {
     try {
       setIsLoading(true);
@@ -46,18 +57,21 @@ const LoginForm = () => {
       });
 
       if (loginData?.error) {
-        toast.error("Incorrect e-mail or password");
+        toast.error("Incorrect e-mail or password", toastStyle);
+        isUserError = true;
         return;
       }
       
       router.push("/");
 
     } catch (error) {
-      toast.error("Something went wrong");
+      toast.error("Something went wrong", toastStyle);
 
     } finally {
       reset();
       setIsLoading(false);
+
+      if (!isUserError) toast.loading("Redirecting...", toastStyle);
     }
   };
 
