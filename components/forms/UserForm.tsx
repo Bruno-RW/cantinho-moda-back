@@ -13,7 +13,7 @@ import { FiUser} from "react-icons/fi";
 
 import { User } from "@prisma/client";
 
-import { newUserFormData, newUserFormSchema } from "@/lib/types/forms";
+import { userFormData, userFormSchema } from "@/lib/types/forms";
 import { useTheme } from "@/context/ThemeContext";
 import { cn } from "@/lib/utils";
 
@@ -31,9 +31,9 @@ const userTypes: userTypesValues[] = [
   { label: "Master", value: "M" },
 ];
 
-interface NewUserFormProps { initialData?: User | null };
+interface UserFormProps { initialData?: User | null };
 
-const NewUserForm: React.FC<NewUserFormProps> = ({ initialData }) => {
+const UserForm: React.FC<UserFormProps> = ({ initialData }) => {
   const router = useRouter();
   const params = useParams();
   const { theme } = useTheme();
@@ -57,10 +57,10 @@ const NewUserForm: React.FC<NewUserFormProps> = ({ initialData }) => {
     size: 20
   } as const;
 
-  const { handleSubmit, register, formState: {errors} } = useForm<newUserFormData>({
-    resolver: zodResolver(newUserFormSchema),
+  const { handleSubmit, register, formState: {errors} } = useForm<userFormData>({
+    resolver: zodResolver(userFormSchema),
     defaultValues: initialData || {
-      fullName: "",
+      name: "",
       type: "",
       email: "",
       password: "",
@@ -68,7 +68,7 @@ const NewUserForm: React.FC<NewUserFormProps> = ({ initialData }) => {
     },
   });
 
-  const onSubmit = async (data: newUserFormData) => {
+  const onSubmit = async (data: userFormData) => {
     try {
       setIsLoading(true);
 
@@ -94,12 +94,12 @@ const NewUserForm: React.FC<NewUserFormProps> = ({ initialData }) => {
         <div className="flex gap-x-3">
           <div className="flex flex-col gap-y-1 w-full">
             <Input endContent={<FiUser {...iconStyle} />}
-              {...register("fullName")}
+              {...register("name")}
               label="Name"
               variant="bordered"
               autoFocus
             />
-            {errors.fullName && <ErrorMessage className="ml-2" message={errors.fullName.message} />}
+            {errors.name && <ErrorMessage className="ml-2" message={errors.name.message} />}
           </div>
 
           <div className="flex flex-col gap-y-1 w-1/2">
@@ -151,4 +151,4 @@ const NewUserForm: React.FC<NewUserFormProps> = ({ initialData }) => {
     </>
   );
 }
-export default NewUserForm;
+export default UserForm;

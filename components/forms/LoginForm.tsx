@@ -9,7 +9,7 @@ import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
 import { useState } from "react";
 
-import { newLoginFormData, newLoginFormSchema } from "@/lib/types/forms";
+import { loginFormData, loginFormSchema } from "@/lib/types/forms";
 import { useTheme } from "@/context/ThemeContext";
 import { cn } from "@/lib/utils";
 
@@ -36,17 +36,16 @@ const LoginForm = () => {
   
   const submitLabel  = (isLoading ? "Signing in..." : "Sign in")
 
-  const { handleSubmit, register, reset, formState: {errors} } = useForm<newLoginFormData>({
-    resolver: zodResolver(newLoginFormSchema),
+  const { handleSubmit, register, reset, formState: {errors} } = useForm<loginFormData>({
+    resolver: zodResolver(loginFormSchema),
     defaultValues: {
       email: "",
       password: "",
-      remember: true,
     },
   });
 
   let isUserError = false;
-  const onSubmit = async (data: newLoginFormData) => {
+  const onSubmit = async (data: loginFormData) => {
     try {
       setIsLoading(true);
 
@@ -70,8 +69,7 @@ const LoginForm = () => {
     } finally {
       reset();
       setIsLoading(false);
-
-      if (!isUserError) toast.loading("Redirecting...", toastStyle);
+      toast.loading("Redirecting...", {...toastStyle, duration: Infinity});
     }
   };
 
