@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { IoIosArrowForward } from "react-icons/io";
 
 import { capitalize } from "@/lib/utils";
+import { Fragment } from "react";
 
 const Breadcrumbs = () => {
   const pathname = usePathname();
@@ -20,15 +21,15 @@ const Breadcrumbs = () => {
           <Link className={linkStyles} href={"/"}>Home</Link>
 
           {pathList.map((item, key) => 
-            <>
-              <IoIosArrowForward className={linkStyles} size={20} key={`arrow-${key}`} />
+            <Fragment key={key}>
+              <IoIosArrowForward className={linkStyles} size={20} />
 
               {pathList.length === 1 && key === 0 || pathList.length === 2 && key === 1 ? (
-                <span className={currentLinkStyles} key={key}>{capitalize(item)}</span>
+                <span className={currentLinkStyles}>{capitalize(item)}</span>
               ) : (
-                <Link className={linkStyles} href={`/${item}`} key={key}>{capitalize(item)}</Link>
+                <Link className={linkStyles} href={`/${item}`}>{capitalize(item)}</Link>
               )}
-            </>
+            </Fragment>
           )}
         </div>
       )}
