@@ -42,6 +42,11 @@ h3 {
 }
 
 
+/* ----- LOGIN ----- */
+.login {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .3);
+}
+
 /* ----- NAVBAR ----- */
 .navbar-li {
   @apply relative ml-3.5 rounded-l-full list-none border border-transparent transition-transform 
