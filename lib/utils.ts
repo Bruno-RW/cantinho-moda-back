@@ -22,3 +22,7 @@ export function getUrl(headers: ReadonlyHeaders) {
 
   return { url, pathname, origin };
 }
+
+export function capitalize(string: string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
