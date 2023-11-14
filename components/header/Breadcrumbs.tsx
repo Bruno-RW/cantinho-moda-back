@@ -15,7 +15,7 @@ const Breadcrumbs = () => {
 
   return (
     <div className="flex items-center gap-x-1.5 ml-2">
-      <Link className={cn(linkStyles, pathname === "/" && currentLinkStyles)} href={`${origin}/`}>
+      <Link className={cn(linkStyles, pathname === "/" && currentLinkStyles)} href={"/"}>
         Home
       </Link>
 
@@ -23,7 +23,7 @@ const Breadcrumbs = () => {
         <>
           <IoIosArrowForward className={linkStyles} size={20} />
 
-          <Link className={cn(linkStyles, pathList[pathList.length - 1] === item && currentLinkStyles)} href={`${origin}/${item}`} key={key}>
+          <Link className={cn(linkStyles, pathList[pathList.length - 1] === item && currentLinkStyles)} href={`/${item}`} key={key}>
             {item.charAt(0).toUpperCase() + item.slice(1)}
           </Link>
         </>
