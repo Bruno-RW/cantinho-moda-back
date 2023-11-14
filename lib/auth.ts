@@ -34,7 +34,7 @@ export const authOptions: NextAuthOptions = {
         return {
           id: String(existingUser.id),
           type: existingUser.type,
-          fullName: existingUser.fullName
+          name: existingUser.name
         };
       },
     }),
@@ -46,7 +46,7 @@ export const authOptions: NextAuthOptions = {
         return {
           ...token,
           type: user.type,
-          fullName: user.fullName
+          name: user.name
         }
       }
 
@@ -58,7 +58,7 @@ export const authOptions: NextAuthOptions = {
         user: {
           ...session.user,
           type: token.type,
-          fullName: token.fullName
+          name: token.name
         }
       }
     }

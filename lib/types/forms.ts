@@ -1,8 +1,8 @@
 import { z } from "zod";
 
-export const newUserFormSchema = z
+export const userFormSchema = z
   .object({
-    fullName: z
+    name: z
       .string()
       .trim()
       .min(1, "Name is required")
@@ -38,13 +38,13 @@ export const newUserFormSchema = z
       .max(30, "Password confirmation must be shorter than 30 characters"),
   })
   .refine(({ password, confirmPassword }) => password === confirmPassword, {
-    message: "Password do not match",
+    message: "Password does not match",
     path: ["confirmPassword"]
   }
 );
-export type newUserFormData = z.infer<typeof newUserFormSchema>;
+export type userFormData = z.infer<typeof userFormSchema>;
 
-export const newLoginFormSchema = z.object({
+export const loginFormSchema = z.object({
   email: z
     .string()
     .trim()
@@ -59,8 +59,5 @@ export const newLoginFormSchema = z.object({
     .min(1, "Password is required")
     .min(8, "Password must have atleast 8 characters")
     .max(30, "Password must be shorter than 30 characters"),
-  remember: z
-  .boolean()
-  .optional()
 });
-export type newLoginFormData = z.infer<typeof newLoginFormSchema>;
+export type loginFormData = z.infer<typeof loginFormSchema>;

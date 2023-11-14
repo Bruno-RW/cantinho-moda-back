@@ -54,7 +54,7 @@ model Category {
 // Client
 model Client {
   id        Int      @id @default(autoincrement())
-  fullName  String   @db.VarChar(60)
+  name      String   @db.VarChar(60)
   email     String   @unique @db.VarChar(70)
   password  String   @db.VarChar(255)
 
@@ -109,11 +109,11 @@ model NewsClient {
 
 //? Admin users
 model User {
-  id         Int       @id @default(autoincrement())
-  type       String    @db.Char(1)
-  fullName   String    @db.VarChar(70)
-  email      String    @unique @db.VarChar(70)
-  password   String    @db.VarChar(255)
+  id        Int      @id @default(autoincrement())
+  type      String   @db.Char(1)
+  name      String   @db.VarChar(70)
+  email     String   @unique @db.VarChar(70)
+  password  String   @db.VarChar(255)
 
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt

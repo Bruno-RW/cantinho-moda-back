@@ -17,7 +17,7 @@ const UserAvatar = () => {
   const { theme, toggleTheme } = useTheme();
   const { data: session } = useSession();
 
-  const userName = getInitials(session?.user.fullName || "Default User");
+  const userName = getInitials(session?.user.name || "Default User");
 
   return (
     <Dropdown>
