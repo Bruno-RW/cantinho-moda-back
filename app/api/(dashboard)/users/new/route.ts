@@ -2,12 +2,12 @@ import { NextResponse } from "next/server";
 import { hash } from "bcrypt";
 
 import db from "@/lib/db";
-import { newUserFormSchema } from "@/lib/types/forms";
+import { userFormSchema } from "@/lib/types/forms";
 
 export async function POST(req: Request) {
   try {
     const body: unknown = await req.json();
-    const { fullName, email, type, password } = newUserFormSchema.parse(body);
+    const { name, email, type, password } = userFormSchema.parse(body);
 
     const existingUserByEmail = await db.user.findUnique({ where: { email } });
 
@@ -18,7 +18,7 @@ export async function POST(req: Request) {
     await db.user.create({
       data: {
         password: hashedPassword,
-        fullName,
+        name,
         email,
         type,
       }
