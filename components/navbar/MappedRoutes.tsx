@@ -5,7 +5,7 @@ import Link from "next/link";
 import { navbarInfo } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
-import Badge from "@/components/ui/Badge";
+import Badge from "@/components/ui/custom/Badge";
 
 interface MappedRoutesProps { isActive: boolean };
 

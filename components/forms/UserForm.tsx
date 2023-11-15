@@ -18,8 +18,8 @@ import { useTheme } from "@/context/ThemeContext";
 import { cn } from "@/lib/utils";
 
 import ErrorMessage from "@/components/forms/ErrorMessage";
-import Heading from "@/components/ui/Heading";
-import Button from "@/components/ui/Button";
+import Heading from "@/components/ui/custom/Heading";
+import Button from "@/components/ui/custom/Button";
 
 type userTypesValues = {
   label: "Admin" | "Master",

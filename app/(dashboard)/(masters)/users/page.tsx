@@ -2,9 +2,11 @@ import { AiOutlinePlus } from "react-icons/ai";
 
 import db from "@/lib/db";
 
-import Button from "@/components/ui/Button";
-import Heading from "@/components/ui/Heading";
-import Separator from "@/components/ui/Separator";
+import Button from "@/components/ui/custom/Button";
+import Heading from "@/components/ui/custom/Heading";
+import ApiList from "@/components/ui/custom/ApiList";
+import Separator from "@/components/ui/custom/Separator";
+// import DataTable from "@/components/ui/DataTable";
 
 const UsersPage = async () => {
   const users = await db.user.findMany({
@@ -25,14 +27,14 @@ const UsersPage = async () => {
 
       <Separator />
 
-      {/* <DataTable searchKey="fullName" columns={UserColumn} data={data} /> */}
+      {/* <DataTable /> */}
 
       <Heading subtitle="API" description="API calls for users" />
 
       <Separator />
 
-      {/* <ApiList entityName="users" entityIdName="userId" />  */}
+      <ApiList entityName="users" entityIdName="userId" /> 
     </>
   );
-};
+}
 export default UsersPage;

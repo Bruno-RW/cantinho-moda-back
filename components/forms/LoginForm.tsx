@@ -14,7 +14,7 @@ import { useTheme } from "@/context/ThemeContext";
 import { cn } from "@/lib/utils";
 
 import ErrorMessage from "@/components/forms/ErrorMessage";
-import Button from "@/components/ui/Button";
+import Button from "@/components/ui/custom/Button";
 
 const LoginForm = () => {
   const router = useRouter();
