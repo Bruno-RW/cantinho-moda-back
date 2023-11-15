@@ -9,6 +9,10 @@
   appearance: none;
 }   
 
+:root, html, body {
+  @apply w-full h-full bg-gray-50 dark:bg-neutral-900;
+}
+
 
 /* ----- BASE ----- */
 h1 {
@@ -46,6 +50,7 @@ h3 {
 .login {
   box-shadow: 0 10px 30px rgba(0, 0, 0, .3);
 }
+
 
 /* ----- NAVBAR ----- */
 .navbar-li {

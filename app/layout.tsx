@@ -23,7 +23,7 @@ export default function RootLayout( {children}: {children: React.ReactNode} ) {
     <html lang="en-US">
       <body className={font.className} suppressHydrationWarning={true}>
         <ContextProvider>
-          <div className="flex relative w-full h-full bg-gray-50 dark:bg-neutral-900">
+          <div className="flex relative">
             {children}
           </div>
         </ContextProvider>
