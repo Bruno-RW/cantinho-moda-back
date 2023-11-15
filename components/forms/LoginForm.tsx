@@ -1,9 +1,9 @@
 "use client";
 
-import { Input } from "@nextui-org/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FaEnvelope, FaLock } from "react-icons/fa";
 import { useRouter } from "next/navigation";
+import { Input } from "@nextui-org/react";
 import { useForm } from "react-hook-form";
 import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
@@ -69,7 +69,8 @@ const LoginForm = () => {
     } finally {
       reset();
       setIsLoading(false);
-      toast.loading("Redirecting...", {...toastStyle, duration: Infinity});
+
+      if(!isUserError) toast.loading("Redirecting...", {...toastStyle, duration: Infinity});
     }
   };
 
