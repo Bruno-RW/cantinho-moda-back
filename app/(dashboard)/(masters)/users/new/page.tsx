@@ -1,3 +1,3 @@
-import NewUserForm from "@/components/forms/UserForm";
+import UserForm from "@/components/forms/UserForm";
 
-export default function NewUserPage() {return <NewUserForm />};
+export default function NewUserPage() {return <UserForm />};
