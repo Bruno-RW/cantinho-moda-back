@@ -7,8 +7,7 @@ import { useTheme } from "@/context/ThemeContext";
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge, BadgeProps } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-
+import Button from "@/components/ui/custom/Button";
 interface ApiAlertProps {
   title: string;
   description: string;
@@ -57,8 +56,9 @@ const ApiAlert: React.FC<ApiAlertProps> = ({
         <code className="font-mono text-sm font-semibold py-[0.2rem] px-[0.3rem] rounded bg-gray-200 dark:bg-black/20">
           {description}
         </code>
-        <Button className="bg-border dark:bg-neutral-950/50" variant="outline" size="sm" onClick={() => onCopy(description)}>
-          <Copy className="h-4 w-4" />  
+        
+        <Button className="bg-border px-3.5 dark:bg-neutral-950/50" onClick={() => onCopy(description)}>
+          <Copy className="h-4 w-4" />
         </Button>
       </AlertDescription>
     </Alert>
