@@ -1,6 +1,6 @@
 import { UsersColumnProps, UsersColumn } from "./UsersColumn";
 
-import DataTable from "@/components/ui/custom/DataTable";
+import DataTable from "@/components/tables/DataTable";
 import ApiList from "@/components/ui/custom/ApiList";
 
 interface UsersDataProps { data: UsersColumnProps[] };
