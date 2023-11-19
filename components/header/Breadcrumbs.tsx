@@ -11,7 +11,7 @@ const Breadcrumbs = () => {
   const pathname = usePathname();
   const pathList = pathname.split("/").filter(path => path !== "");
 
-  const linkStyles = "text-lg text-black/50 dark:text-white/50 hover:underline";
+  const linkStyles = "text-lg font-medium text-black/50 dark:font-normal dark:text-white/50 hover:underline";
   const currentLinkStyles = "text-lg text-black cursor-default hover:no-underline dark:text-gray-50";
 
   return (
