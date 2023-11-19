@@ -87,7 +87,7 @@ const UserForm: React.FC<UserFormProps> = ({ initialData }) => {
   }
 
   return (
-    <>
+    <section className="flex flex-col gap-y-3">
       <Heading title={title} description={description} />
 
       <form className="flex flex-col w-full gap-y-3" onSubmit={handleSubmit(onSubmit)}>
@@ -148,7 +148,7 @@ const UserForm: React.FC<UserFormProps> = ({ initialData }) => {
 
         <Button className={cn("w-1/4", isLoading && "bg-blue-600/70 dark:bg-blue-500/40")} type="submit" variant="blue" isLoading={isLoading}>{submitLabel}</Button>
       </form>
-    </>
+    </section>
   );
 }
 export default UserForm;

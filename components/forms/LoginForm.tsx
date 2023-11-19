@@ -34,7 +34,7 @@ const LoginForm = () => {
     size: 20
   } as const;
   
-  const submitLabel  = (isLoading ? "Signing in..." : "Sign in")
+  const submitLabel  = (isLoading ? "Signing in..." : "Sign in");
 
   const { handleSubmit, register, reset, formState: {errors} } = useForm<loginFormData>({
     resolver: zodResolver(loginFormSchema),
