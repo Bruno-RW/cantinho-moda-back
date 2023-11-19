@@ -26,3 +26,14 @@ export function getUrl(headers: ReadonlyHeaders) {
 export function capitalize(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+export function formatDateTime (date: Date) {
+  return new Intl.DateTimeFormat("en-US", {
+    day: "numeric",
+    month: "numeric",
+    year: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+  }).format(date);
+}
