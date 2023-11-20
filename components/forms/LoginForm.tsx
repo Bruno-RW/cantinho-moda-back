@@ -9,7 +9,7 @@ import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
 import { useState } from "react";
 
-import { loginFormData, loginFormSchema } from "@/lib/types/forms";
+import { iconStyle, loginFormData, loginFormSchema } from "@/lib/types/forms";
 import useToastStyle from "@/hooks/useToastStyle";
 import { cn } from "@/lib/utils";
 
@@ -21,11 +21,6 @@ const LoginForm = () => {
   const { toastStyle } = useToastStyle();
   const [isLoading, setIsLoading] = useState(false);
 
-  const iconStyle = {
-    className: "self-center text-default-400",
-    size: 20
-  } as const;
-  
   const submitLabel  = (isLoading ? "Signing in..." : "Sign in");
 
   const { handleSubmit, register, reset, formState: {errors} } = useForm<loginFormData>({

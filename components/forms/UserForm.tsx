@@ -13,7 +13,7 @@ import { FiUser} from "react-icons/fi";
 
 import { User } from "@prisma/client";
 
-import { userFormData, userFormSchema } from "@/lib/types/forms";
+import { iconStyle, userFormData, userFormSchema } from "@/lib/types/forms";
 import useToastStyle from "@/hooks/useToastStyle";
 import { cn } from "@/lib/utils";
 
@@ -44,11 +44,6 @@ const UserForm: React.FC<UserFormProps> = ({ initialData }) => {
   const toastMessage = initialData ? "User updated" : "User created";
   const submitLabel  = initialData ? (isLoading ? "Saving..." : "Save") : (isLoading ? "Creating..." : "Create");
   
-  const iconStyle = {
-    className: "self-center text-default-400",
-    size: 20
-  } as const;
-
   const confirmPassword = initialData?.password;
 
   const { handleSubmit, register, formState: {errors} } = useForm<userFormData>({

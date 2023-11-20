@@ -1,5 +1,10 @@
 import { z } from "zod";
 
+export const iconStyle = {
+  className: "self-center text-default-400",
+  size: 20
+} as const;
+
 export const userFormSchema = z
   .object({
     name: z
