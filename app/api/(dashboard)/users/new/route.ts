@@ -26,7 +26,8 @@ export async function POST(req: Request) {
 
     return NextResponse.json("Admin user created successfully", { status: 201 });
 
-  } catch (error: any) {
+  } catch (error) {
+    console.log("[NEWUSER_POST]", error);
     return new NextResponse("Internal error", { status: 500 });
   }
 }
