@@ -9,9 +9,10 @@ import Separator from "./Separator";
 interface ApiListProps {
   entityName: string;
   entityIdName: string;
+  type?: "admin" | "master";
 }
 
-const ApiList: React.FC<ApiListProps> = ({ entityIdName, entityName }) => {
+const ApiList: React.FC<ApiListProps> = ({ entityIdName, entityName, type = "admin" }) => {
   const origin = useOrigin();
 
   const baseUrl = `${origin}/api`;
@@ -23,14 +24,23 @@ const ApiList: React.FC<ApiListProps> = ({ entityIdName, entityName }) => {
         <Separator />
       </div>
 
-      <div className="flex flex-col gap-y-4">
-        <ApiAlert title="GET"    variant="public" description={`${baseUrl}/${entityName}`} />
-        <ApiAlert title="GET"    variant="public" description={`${baseUrl}/${entityName}/{${entityIdName}}`} />
-        
-        <ApiAlert title="POST"   variant="admin"  description={`${baseUrl}/${entityName}`} />
-        <ApiAlert title="PATCH"  variant="admin"  description={`${baseUrl}/${entityName}/{${entityIdName}}`} />
-        <ApiAlert title="DELETE" variant="admin"  description={`${baseUrl}/${entityName}/{${entityIdName}}`} />
-      </div>
+      {type === "admin" ? (
+        <div className="flex flex-col gap-y-4">
+          <ApiAlert title="GET"    variant="public" description={`${baseUrl}/${entityName}`} />
+          <ApiAlert title="GET"    variant="public" description={`${baseUrl}/${entityName}/{${entityIdName}}`} />
+          
+          <ApiAlert title="PATCH"  variant="admin"  description={`${baseUrl}/${entityName}/{${entityIdName}}`} />
+          <ApiAlert title="DELETE" variant="admin"  description={`${baseUrl}/${entityName}/{${entityIdName}}`} />
+        </div>
+      ) : (
+        <div className="flex flex-col gap-y-4">
+          <ApiAlert title="GET"    variant="master" description={`${baseUrl}/${entityName}`} />
+          <ApiAlert title="GET"    variant="master" description={`${baseUrl}/${entityName}/{${entityIdName}}`} />
+          
+          <ApiAlert title="PATCH"  variant="master"  description={`${baseUrl}/${entityName}/{${entityIdName}}`} />
+          <ApiAlert title="DELETE" variant="master"  description={`${baseUrl}/${entityName}/{${entityIdName}}`} />
+        </div>
+      )}
     </section>
   );
 };

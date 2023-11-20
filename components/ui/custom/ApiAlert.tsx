@@ -3,7 +3,7 @@
 import { Copy, Server } from "lucide-react";
 import { toast } from "react-hot-toast";
 
-import { useTheme } from "@/context/ThemeContext";
+import useToastStyle from "@/hooks/useToastStyle";
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge, BadgeProps } from "@/components/ui/badge";
@@ -11,17 +11,19 @@ import Button from "@/components/ui/custom/Button";
 interface ApiAlertProps {
   title: string;
   description: string;
-  variant: "public" | "admin";
-}
+  variant: "public" | "admin" | "master";
+};
 
 const textMap: Record<ApiAlertProps["variant"], string> = {
   public: "Public",
   admin: "Admin",
+  master: "Master",
 };
 
 const variantMap: Record<ApiAlertProps["variant"], BadgeProps["variant"]> = {
   public: "secondary",
   admin: "default",
+  master: "destructive",
 };
 
 const ApiAlert: React.FC<ApiAlertProps> = ({
@@ -29,15 +31,7 @@ const ApiAlert: React.FC<ApiAlertProps> = ({
   description,
   variant = "public",
 }) => {
-  const { theme } = useTheme();
-
-  const toastStyle = {
-    style: {
-      color: theme === "light" ? "black" : "white",
-      border: "1px solid rgb(0 0 0 / 0.1)",
-      backgroundColor: theme === "light" ? "white" : "#262626",
-    }
-  } as const;
+  const { toastStyle } = useToastStyle();
 
   const onCopy = (description: string) => {
     navigator.clipboard.writeText(description);

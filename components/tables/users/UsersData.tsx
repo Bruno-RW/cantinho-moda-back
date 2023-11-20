@@ -11,7 +11,7 @@ const UsersData: React.FC<UsersDataProps> = ({ data }) => {
     <>
       <DataTable entityName="users" searchKey="name" columns={UsersColumn} data={data} />
 
-      <ApiList entityName="users" entityIdName="userId" />
+      <ApiList entityName="users" entityIdName="userId" type="master" />
     </>
   );
 };
