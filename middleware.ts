@@ -3,6 +3,16 @@ import { NextResponse } from "next/server";
 
 export default withAuth(
   function middleware(request: NextRequestWithAuth) {
+    //* API ROUTES
+    if (request.nextUrl.pathname.startsWith("/api") && !request.nextauth.token?.type) {
+      return NextResponse.redirect( new URL("/", request.url) );
+    }
+
+    if (request.nextUrl.pathname.startsWith("/api/users") && request.nextauth.token?.type !== "M") {
+      return NextResponse.redirect( new URL("/", request.url) );
+    }
+
+    //* DASHBOARD ROUTES
     if (request.nextUrl.pathname.startsWith("/users") && request.nextauth.token?.type !== "M") {
       return NextResponse.redirect( new URL("/", request.url) );
     }
