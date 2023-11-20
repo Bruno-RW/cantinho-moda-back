@@ -10,7 +10,7 @@ import toast from "react-hot-toast";
 import { useState } from "react";
 
 import { loginFormData, loginFormSchema } from "@/lib/types/forms";
-import { useTheme } from "@/context/ThemeContext";
+import useToastStyle from "@/hooks/useToastStyle";
 import { cn } from "@/lib/utils";
 
 import ErrorMessage from "@/components/forms/ErrorMessage";
@@ -18,16 +18,8 @@ import Button from "@/components/ui/custom/Button";
 
 const LoginForm = () => {
   const router = useRouter();
-  const { theme } = useTheme();
+  const { toastStyle } = useToastStyle();
   const [isLoading, setIsLoading] = useState(false);
-
-  const toastStyle = {
-    style: {
-      color: theme === "light" ? "black" : "white",
-      border: "1px solid rgb(0 0 0 / 0.1)",
-      backgroundColor: theme === "light" ? "white" : "#262626",
-    }
-  } as const;
 
   const iconStyle = {
     className: "self-center text-default-400",

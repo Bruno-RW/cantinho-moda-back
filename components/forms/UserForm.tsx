@@ -14,7 +14,7 @@ import { FiUser} from "react-icons/fi";
 import { User } from "@prisma/client";
 
 import { userFormData, userFormSchema } from "@/lib/types/forms";
-import { useTheme } from "@/context/ThemeContext";
+import useToastStyle from "@/hooks/useToastStyle";
 import { cn } from "@/lib/utils";
 
 import ErrorMessage from "@/components/forms/ErrorMessage";
@@ -36,7 +36,7 @@ interface UserFormProps { initialData?: User | null };
 const UserForm: React.FC<UserFormProps> = ({ initialData }) => {
   const router = useRouter();
   const params = useParams();
-  const { theme } = useTheme();
+  const { toastStyle } = useToastStyle();
   const [isLoading, setIsLoading] = useState(false);
 
   const title        = initialData ? "Edit user" : "Create user";
@@ -44,22 +44,16 @@ const UserForm: React.FC<UserFormProps> = ({ initialData }) => {
   const toastMessage = initialData ? "User updated" : "User created";
   const submitLabel  = initialData ? (isLoading ? "Saving..." : "Save") : (isLoading ? "Creating..." : "Create");
   
-  const toastStyle = {
-    style: {
-      color: theme === "light" ? "black" : "white",
-      border: "1px solid rgb(0 0 0 / 0.1)",
-      backgroundColor: theme === "light" ? "white" : "#262626",
-    }
-  } as const;
-
   const iconStyle = {
     className: "self-center text-default-400",
     size: 20
   } as const;
 
+  const confirmPassword = initialData?.password;
+
   const { handleSubmit, register, formState: {errors} } = useForm<userFormData>({
     resolver: zodResolver(userFormSchema),
-    defaultValues: initialData || {
+    defaultValues: { ...initialData, confirmPassword } || {
       name: "",
       type: "",
       email: "",
