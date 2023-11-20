@@ -38,14 +38,18 @@ const UserAvatar = () => {
         </div>
       </DropdownTrigger>
 
-      <DropdownMenu aria-label="Static Actions">
+      <DropdownMenu aria-label="User options">
         <DropdownItem className="flex" onClick={toggleTheme} key="theme" textValue="theme">
           Theme: {theme === "dark" ? "dark" : "light"}
         </DropdownItem>
 
-        <DropdownItem key="settings" textValue="settings">Settings</DropdownItem>
+        <DropdownItem key="settings" textValue="settings">
+          Settings
+        </DropdownItem>
 
-        <DropdownItem className="text-danger" color="danger" key="logout" textValue="logout" onClick={() => signOut()}>Log out</DropdownItem>
+        <DropdownItem className="text-danger" color="danger" key="logout" textValue="logout" onClick={() => signOut()}>
+          Log out
+        </DropdownItem>
       </DropdownMenu>
     </Dropdown>
   );
