@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 import Modal from "@/components/ui/custom/Modal";
-import { Button } from "@/components/ui/button";
+import Button from "@/components/ui/custom/Button";
 
 interface AlertModalProps {
   isOpen: boolean;
@@ -27,8 +27,8 @@ const AlertModal: React.FC<AlertModalProps> = ({
   return (
     <Modal title="Are you sure?" description="This action cannot be undone." isOpen={isOpen} onClose={onClose}>
       <div className="pt-6 space-x-2 flex items-center justify-end w-full">
-        <Button disabled={loading} variant="outline" onClick={onClose}>Cancel</Button>
-        <Button disabled={loading} variant="destructive" onClick={onConfirm}>Continue</Button>
+        <Button className="rounded-sm dark:hover:bg-neutral-900" disabled={loading} onClick={onClose}>Cancel</Button>
+        <Button className="rounded-sm hover:bg-red-700 dark:bg-red-600 dark:hover:bg-red-700" variant="red" disabled={loading} onClick={onConfirm}>Continue</Button>
       </div>
     </Modal>
   );
