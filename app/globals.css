@@ -84,7 +84,51 @@ html.dark .navbar-li:hover .link-after {
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
   appearance: none;
-}   
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar-track {
+  border-radius: 100vh;
+  margin-block: .25em;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 100vh;
+  border: none;
+}
+
+html::-webkit-scrollbar-track {
+  background: rgba(230, 230, 230, .75);
+}
+
+html::-webkit-scrollbar-thumb {
+  background: rgba(200, 200, 200, .75);
+}
+html::-webkit-scrollbar-thumb:hover {
+  background: rgba(190, 190, 190, .85);
+}
+
+html::-webkit-scrollbar {
+  background-color: #F9FAFB;
+  width: 1.075em;
+}
+
+/* Scrollbar styles (dark mode) */
+html.dark::-webkit-scrollbar-track {
+  background: #171717;
+}
+
+html.dark::-webkit-scrollbar-thumb {
+  background: #0f0f0f;
+}
+html.dark::-webkit-scrollbar-thumb:hover {
+  background: #111111;
+}
+
+html.dark::-webkit-scrollbar {
+  background-color: #171717;
+}
+
 
 /* Remove autofill styles on inputs */
 input:-webkit-autofill,
