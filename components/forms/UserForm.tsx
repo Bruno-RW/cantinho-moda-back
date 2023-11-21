@@ -109,7 +109,7 @@ const UserForm: React.FC<UserFormProps> = ({ initialData }) => {
           <Heading title={title} description={description} />
 
           {initialData && 
-            <Button className="px-3" variant="red" onClick={() => setIsOpen(true)}>
+            <Button className="px-3 hover:bg-red-700 dark:bg-red-700 dark:hover:bg-red-600" variant="red" onClick={() => setIsOpen(true)}>
               <LuTrash size={20} />
             </Button>
           }
