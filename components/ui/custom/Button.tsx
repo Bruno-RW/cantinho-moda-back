@@ -10,6 +10,7 @@ const buttonStyles = cva(
     variants: {
       variant: {
         default : "bg-border hover:text-black/90 dark:hover:text-white",
+        red: "text-gray-50 outline-[#C43B3B] bg-red-600 dark:bg-red-500/80",
         blue: "text-gray-50 outline-[#0664CF] bg-blue-600 dark:bg-blue-500/80",
       },
       defaultVariants: { 
