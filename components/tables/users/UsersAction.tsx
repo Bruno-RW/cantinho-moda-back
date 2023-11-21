@@ -27,8 +27,8 @@ interface UsersActionProps { data: UsersColumnProps };
 const UsersAction: React.FC<UsersActionProps> = ({ data }) => {
   const router = useRouter();
   const { theme } = useTheme();
-  const [open, setOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const toastStyle = {
     style: {
@@ -40,7 +40,7 @@ const UsersAction: React.FC<UsersActionProps> = ({ data }) => {
 
   const onConfirm = async () => {
     try {
-      setLoading(true);
+      setIsLoading(true);
       await axios.delete(`/api/users/${data.id}`);
 
       toast.success("User deleted", toastStyle);
@@ -50,8 +50,8 @@ const UsersAction: React.FC<UsersActionProps> = ({ data }) => {
       toast.error("Internal error", toastStyle);
 
     } finally {
-      setOpen(false);
-      setLoading(false);
+      setIsOpen(false);
+      setIsLoading(false);
     }
   };
 
@@ -63,10 +63,10 @@ const UsersAction: React.FC<UsersActionProps> = ({ data }) => {
   return (
     <>
       <AlertModal
-        isOpen={open}
-        onClose={() => setOpen(false)}
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
         onConfirm={onConfirm}
-        loading={loading}
+        loading={isLoading}
       />
 
       {/* <DropdownMenu>
@@ -101,8 +101,8 @@ const UsersAction: React.FC<UsersActionProps> = ({ data }) => {
         <Tooltip className="text-blue-500" content="Edit">
           <Edit className="text-blue-500 h-4 w-4 cursor-pointer" onClick={() => router.push(`/users/${data.id}`)} />
         </Tooltip>
-        <Tooltip className="text-red-500 " content="Delete">
-          <Trash className="text-red-500 h-4 w-4 cursor-pointer" onClick={() => setOpen(true)} />
+        <Tooltip className="text-red-500" content="Delete">
+          <Trash className="text-red-500 h-4 w-4 cursor-pointer" onClick={() => setIsOpen(true)} />
         </Tooltip>
       </div>
     </>
