@@ -43,18 +43,21 @@ interface DataTableProps<TData, TValue> {
 export default function DataTable<TData, TValue>({ columns, entityName, searchKey, data }: DataTableProps<TData, TValue>) {
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
-  const [rowSelection, setRowSelection] = useState({});
   const [sorting, setSorting] = useState<SortingState>([]);
+  const [rowSelection, setRowSelection] = useState({});
 
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+
     onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
+
     onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
+    
     onColumnVisibilityChange: setColumnVisibility,
     onRowSelectionChange: setRowSelection,
     state: {
@@ -110,7 +113,7 @@ export default function DataTable<TData, TValue>({ columns, entityName, searchKe
               ) : (
                 <TableRow>
                   <TableCell colSpan={columns.length} className="text-center h-24">
-                    No results.
+                    No results found.
                   </TableCell>
                 </TableRow>
               )}
