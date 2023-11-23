@@ -122,6 +122,7 @@ const UserForm: React.FC<UserFormProps> = ({ initialData }) => {
                 {...register("name")}
                 label="Name"
                 variant="bordered"
+                isRequired
                 autoFocus
               />
               {errors.name && <ErrorMessage className="ml-2" message={errors.name.message} />}
@@ -133,6 +134,7 @@ const UserForm: React.FC<UserFormProps> = ({ initialData }) => {
                 label="Type"
                 variant="bordered"
                 items={userTypes}
+                isRequired
               >
                 {type => <SelectItem key={type.value}>{type.label}</SelectItem>}
               </Select>
@@ -145,6 +147,7 @@ const UserForm: React.FC<UserFormProps> = ({ initialData }) => {
               {...register("email")}
               label="Email"
               variant="bordered"
+              isRequired
             />
             {errors.email && <ErrorMessage className="ml-2" message={errors.email.message} />}
           </div>
@@ -156,6 +159,7 @@ const UserForm: React.FC<UserFormProps> = ({ initialData }) => {
                 type="password"
                 label="Password"
                 variant="bordered"
+                isRequired
               />
               {errors.password && <ErrorMessage className="ml-2" message={errors.password.message} />}
             </div>
@@ -166,6 +170,7 @@ const UserForm: React.FC<UserFormProps> = ({ initialData }) => {
                 type="password"
                 label="Confirm password"
                 variant="bordered"
+                isRequired
               />
               {errors.confirmPassword && <ErrorMessage className="ml-2" message={errors.confirmPassword.message} />}
             </div>
