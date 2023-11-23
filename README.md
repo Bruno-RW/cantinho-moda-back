@@ -2,7 +2,7 @@
 Not available yet.
 
 # CREATE YOUR OWN
-To run the application you have to rename the ".env" file to ".env.local". This file will contain the environment variables which are the ones below:
+To run the application open the ".env" file and add the values to the variables below:
 
 ## Supabase
 (Any PostreSQL database with the Prisma ORM for this project)
