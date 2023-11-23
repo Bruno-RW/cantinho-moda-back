@@ -32,6 +32,7 @@ import Heading from "@/components/ui/custom/Heading";
 
 import { DataTablePagination } from "./DataTablePagination";
 import { DataTableFilters } from "./DataTableFilters";
+import { useNavbar } from "@/context/NavbarContext";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -45,6 +46,7 @@ export default function DataTable<TData, TValue>({ columns, entityName, searchKe
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [sorting, setSorting] = useState<SortingState>([]);
   const [rowSelection, setRowSelection] = useState({});
+  const { isActive } = useNavbar();
 
   const table = useReactTable({
     data,
@@ -121,7 +123,7 @@ export default function DataTable<TData, TValue>({ columns, entityName, searchKe
           </Table>
         </div>
 
-        <DataTablePagination table={table} />
+        <DataTablePagination table={table} isActive={isActive} />
       </div>
     </section>
   );

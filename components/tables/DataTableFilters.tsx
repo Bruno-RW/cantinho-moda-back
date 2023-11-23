@@ -27,7 +27,7 @@ export function DataTableFilters<TData>({ table, searchKey }: DataTableFiltersPr
 
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button className="hidden h-8 md:flex dark:bg-neutral-950/50" variant="outline" size="sm">
+          <Button className="hidden h-8 lg:flex dark:bg-neutral-950/50" variant="outline" size="sm">
             <PiSlidersHorizontal className="mr-2 h-4 w-4" /> Columns
           </Button>
         </DropdownMenuTrigger>

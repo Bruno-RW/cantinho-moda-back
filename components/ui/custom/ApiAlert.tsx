@@ -46,12 +46,12 @@ const ApiAlert: React.FC<ApiAlertProps> = ({
         <Badge variant={variantMap[variant]}>{textMap[variant]}</Badge>
       </AlertTitle>
 
-      <AlertDescription className="flex items-center justify-between mt-4">
-        <code className="font-mono text-sm font-semibold py-[0.2rem] px-[0.3rem] rounded bg-gray-200 dark:bg-black/20">
+      <AlertDescription className="flex flex-col sm:flex-row sm:items-center justify-between mt-4 gap-y-2">
+        <code className="font-mono text-xs lg:text-sm font-semibold break-words max-w-fit py-[0.2rem] px-[0.3rem] rounded bg-gray-200 dark:bg-black/20">
           {description}
         </code>
         
-        <Button className="bg-border px-3.5 dark:bg-neutral-950/50" onClick={() => onCopy(description)}>
+        <Button className="bg-border w-min px-3.5 dark:bg-neutral-950/50" onClick={() => onCopy(description)}>
           <Copy className="h-4 w-4" />
         </Button>
       </AlertDescription>
