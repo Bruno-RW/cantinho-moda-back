@@ -48,6 +48,7 @@ model Category {
   product  Product[]  // Relation to Product
 
   createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
 }
 
 
@@ -102,9 +103,6 @@ model NewsClient {
 
   @@index([id])
 }
-
-
-// Company?
 
 
 //? Admin users
