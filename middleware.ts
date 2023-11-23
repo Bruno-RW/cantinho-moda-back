@@ -12,12 +12,16 @@ export default withAuth(
       return NextResponse.redirect( new URL("/", request.url) );
     }
 
+    if (request.nextUrl.pathname.startsWith("/api/clients") && request.nextauth.token?.type !== "M") {
+      return NextResponse.redirect( new URL("/", request.url) );
+    }
+
     //* DASHBOARD ROUTES
     if (request.nextUrl.pathname.startsWith("/users") && request.nextauth.token?.type !== "M") {
       return NextResponse.redirect( new URL("/", request.url) );
     }
 
-    if (request.nextUrl.pathname.startsWith("/companies") && request.nextauth.token?.type !== "M") {
+    if (request.nextUrl.pathname.startsWith("/clients") && request.nextauth.token?.type !== "M") {
       return NextResponse.redirect( new URL("/", request.url) );
     }
 
