@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
-import { NextResponse } from "next/server";
-import { getServerSession } from "next-auth";
 
 import ContextProvider from "@/providers/ContextProvider";
 
@@ -15,10 +13,6 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout( {children}: {children: React.ReactNode} ) {
-  const session = getServerSession();
-
-  if (!session) return NextResponse.redirect("/api/auth/sigin");
-
   return (
     <html lang="en-US">
       <body className={font.className} suppressHydrationWarning={true}>
