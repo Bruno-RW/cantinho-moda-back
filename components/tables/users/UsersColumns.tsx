@@ -2,12 +2,12 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 
-import UsersAction from "./UsersAction";
+import UsersAction from "./UsersActions";
 import { DataTableColumnHeader } from "../DataTableColumnHeader";
 
 import { Checkbox } from "@/components/ui/checkbox";
 
-export type UsersColumnProps = {
+export type UsersColumnsProps = {
   id: number;
   name: string;
   email: string;
@@ -18,7 +18,7 @@ export type UsersColumnProps = {
 
 const centered = (text: string | number) => <div className="text-center">{text}</div>
 
-export const UsersColumn: ColumnDef<UsersColumnProps>[] = [
+export const UsersColumns: ColumnDef<UsersColumnsProps>[] = [
   {
     id: "select",
     header: ({ table }) => (
