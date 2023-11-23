@@ -5,6 +5,45 @@ export const iconStyle = {
   size: 20
 } as const;
 
+export const loginFormSchema = z.object({
+  email: z
+    .string()
+    .trim()
+    .min(1, "E-mail is required")
+    .min(10, "E-mail must have atleast 10 characters")
+    .max(70, "E-mail must be shorter than 70 characters")
+    .email("Invalid e-mail")
+    .toLowerCase(),
+  password: z
+    .string()
+    .trim()
+    .min(1, "Password is required")
+    .min(8, "Password must have atleast 8 characters")
+    .max(30, "Password must be shorter than 30 characters"),
+});
+export type loginFormData = z.infer<typeof loginFormSchema>;
+
+
+//? ADMIN
+export const categoryFormSchema = z.object({
+  name: z
+    .string()
+    .trim()
+    .min(1, "Name is required")
+    .min(5, "Name must have atleast 5 characters")
+    .max(70, "Name must be shorter than 70 characters"),
+  description: z
+    .string()
+    .trim()
+    .min(1, "Description is required")
+    .min(8, "Description must have atleast 8 characters")
+    .max(255, "Description must be shorter than 255 characters")
+    .optional()
+});
+export type categoryFormData = z.infer<typeof categoryFormSchema>;
+
+
+//! MASTER
 export const userFormSchema = z
   .object({
     name: z
@@ -48,21 +87,3 @@ export const userFormSchema = z
   }
 );
 export type userFormData = z.infer<typeof userFormSchema>;
-
-export const loginFormSchema = z.object({
-  email: z
-    .string()
-    .trim()
-    .min(1, "E-mail is required")
-    .min(10, "E-mail must have atleast 10 characters")
-    .max(70, "E-mail must be shorter than 70 characters")
-    .email("Invalid e-mail")
-    .toLowerCase(),
-  password: z
-    .string()
-    .trim()
-    .min(1, "Password is required")
-    .min(8, "Password must have atleast 8 characters")
-    .max(30, "Password must be shorter than 30 characters"),
-});
-export type loginFormData = z.infer<typeof loginFormSchema>;
