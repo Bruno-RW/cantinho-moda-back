@@ -2,12 +2,12 @@ import db from "@/lib/db";
 import { formatDateTime } from "@/lib/utils";
 
 import UsersData from "@/components/tables/users/UsersData";
-import { UsersColumnProps } from "@/components/tables/users/UsersColumn";
+import { UsersColumnsProps } from "@/components/tables/users/UsersColumns";
 
 const UsersPage = async () => {
   const users = await db.user.findMany();
 
-  const formattedUsers: UsersColumnProps[] = users.map(user => ({
+  const formattedUsers: UsersColumnsProps[] = users.map(user => ({
     id: user.id,
     name: user.name,
     email: user.email,
