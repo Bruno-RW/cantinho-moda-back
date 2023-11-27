@@ -29,6 +29,9 @@ model Product {
 
   favorite  Favorite[]  // Relation to Favorite
 
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
   @@index([id, brandId, categoryId])
 }
 model Brand {
@@ -39,6 +42,7 @@ model Brand {
   product  Product[]  // Relation to Product
 
   createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
 }
 model Category {
   id           Int      @id @default(autoincrement())
@@ -77,6 +81,7 @@ model Favorite {
   client       Client   @relation(fields: [clientId], references: [id])
 
   createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
 
   @@index([productId, clientId])
 }
@@ -89,6 +94,7 @@ model News {
   body   String  
 
   createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
 
   @@index([id])
 }
