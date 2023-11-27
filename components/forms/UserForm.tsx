@@ -49,7 +49,7 @@ const UserForm: React.FC<UserFormProps> = ({ initialData }) => {
   
   const confirmPassword = initialData?.password;
 
-  const { handleSubmit, register, formState: {errors} } = useForm<userFormData>({
+  const { handleSubmit, register, reset, setFocus, formState: {errors} } = useForm<userFormData>({
     resolver: zodResolver(userFormSchema),
     defaultValues: { ...initialData, confirmPassword } || {
       name: "",
@@ -75,6 +75,8 @@ const UserForm: React.FC<UserFormProps> = ({ initialData }) => {
 
     } finally {
       setIsLoading(false);
+      reset();
+      setFocus("name");
     }
   }
 
@@ -92,6 +94,8 @@ const UserForm: React.FC<UserFormProps> = ({ initialData }) => {
     } finally {
       setIsOpen(false);
       setIsLoading(false);
+      reset();
+      setFocus("name");
     }
   };
 

@@ -46,7 +46,7 @@ const CategoryForm: React.FC<CategoryFormProps> = ({ initialData }) => {
   const toastMessage = initialData ? "Category updated" : "Category created";
   const submitLabel  = initialData ? (isLoading ? "Saving..." : "Save") : (isLoading ? "Creating..." : "Create");
   
-  const { handleSubmit, register, formState: {errors} } = useForm<categoryFormData>({
+  const { handleSubmit, register, reset, setFocus, formState: {errors} } = useForm<categoryFormData>({
     resolver: zodResolver(categoryFormSchema),
     defaultValues: initialData || {
       name: "",
@@ -69,6 +69,8 @@ const CategoryForm: React.FC<CategoryFormProps> = ({ initialData }) => {
 
     } finally {
       setIsLoading(false);
+      reset();
+      setFocus("name");
     }
   }
 
@@ -86,6 +88,8 @@ const CategoryForm: React.FC<CategoryFormProps> = ({ initialData }) => {
     } finally {
       setIsOpen(false);
       setIsLoading(false);
+      reset();
+      setFocus("name");
     }
   };
 
