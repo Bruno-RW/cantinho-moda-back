@@ -135,7 +135,6 @@ export const clientFormSchema = z
       .min(1, "Password confirmation is required")
       .min(8, "Password confirmation must have atleast 8 characters")
       .max(30, "Password confirmation must be shorter than 30 characters")
-      .optional()
   })
   .refine(({ password, confirmPassword }) => password === confirmPassword, {
     message: "Password does not match",

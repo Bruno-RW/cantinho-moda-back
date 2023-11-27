@@ -108,7 +108,7 @@ const ClientForm: React.FC<ClientFormProps> = ({ initialData }) => {
 
         <form className="flex flex-col w-full gap-y-3" onSubmit={handleSubmit(onSubmit)}>
           <div className="flex gap-x-3">
-            <div className="flex flex-col gap-y-1 w-full">
+            <div className="flex flex-col gap-y-1 w-2/5">
               <Input endContent={<LuUser {...iconStyle} />}
                 {...register("name")}
                 label="Name"
@@ -119,7 +119,7 @@ const ClientForm: React.FC<ClientFormProps> = ({ initialData }) => {
               {errors.name && <ErrorMessage className="ml-2" message={errors.name.message} />}
             </div>
 
-            <div className="flex flex-col gap-y-1">
+            <div className="flex flex-col gap-y-1 w-3/5">
               <Input endContent={<LuMail {...iconStyle} />}
                 {...register("email")}
                 label="Email"
