@@ -22,16 +22,6 @@ import AlertModal from "@/components/modals/AlertModal";
 import Heading from "@/components/ui/custom/Heading";
 import Button from "@/components/ui/custom/Button";
 
-type userTypesValues = {
-  label: "Admin" | "Master",
-  value: "A" | "M"
-};
-
-const userTypes: userTypesValues[] = [
-  { label: "Admin", value: "A" },
-  { label: "Master", value: "M" },
-];
-
 interface CategoryFormProps { initialData?: User | null };
 
 const CategoryForm: React.FC<CategoryFormProps> = ({ initialData }) => {
