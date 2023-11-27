@@ -1,10 +1,10 @@
 import db from "@/lib/db";
 
-import NewUserForm from "@/components/forms/UserForm";
+import UserForm from "@/components/forms/UserForm";
 
 const EditUserPage = async ({ params }: { params: { userId: string } }) => {
   const user = await db.user.findUnique({ where: { id: Number(params.userId) } });
 
-  return <NewUserForm initialData={user} />;
+  return <UserForm initialData={user} />;
 };
 export default EditUserPage;
