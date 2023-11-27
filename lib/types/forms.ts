@@ -35,8 +35,6 @@ export const categoryFormSchema = z.object({
   description: z
     .string()
     .trim()
-    .min(1, "Description is required")
-    .min(8, "Description must have atleast 8 characters")
     .max(255, "Description must be shorter than 255 characters")
     .optional()
 });
