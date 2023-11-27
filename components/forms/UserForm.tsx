@@ -8,9 +8,7 @@ import { toast } from "react-hot-toast";
 import { useState } from "react";
 import axios from "axios";
 
-import { FaEnvelope, FaLock, FaUnlock } from "react-icons/fa";
-import { LuTrash } from "react-icons/lu";
-import { FiUser} from "react-icons/fi";
+import { LuLock, LuMail, LuTrash, LuUnlock, LuUser } from "react-icons/lu";
 
 import { User } from "@prisma/client";
 
@@ -122,7 +120,7 @@ const UserForm: React.FC<UserFormProps> = ({ initialData }) => {
         <form className="flex flex-col w-full gap-y-3" onSubmit={handleSubmit(onSubmit)}>
           <div className="flex gap-x-3">
             <div className="flex flex-col gap-y-1 w-full">
-              <Input endContent={<FiUser {...iconStyle} />}
+              <Input endContent={<LuUser {...iconStyle} />}
                 {...register("name")}
                 label="Name"
                 variant="bordered"
@@ -147,7 +145,7 @@ const UserForm: React.FC<UserFormProps> = ({ initialData }) => {
           </div>
 
           <div className="flex flex-col gap-y-1">
-            <Input endContent={<FaEnvelope {...iconStyle} />}
+            <Input endContent={<LuMail {...iconStyle} />}
               {...register("email")}
               label="Email"
               variant="bordered"
@@ -158,7 +156,7 @@ const UserForm: React.FC<UserFormProps> = ({ initialData }) => {
 
           <div className="flex gap-x-3">
             <div className="flex flex-col gap-y-1 w-1/2">
-              <Input endContent={<FaUnlock {...iconStyle} />}
+              <Input endContent={<LuUnlock {...iconStyle} />}
                 {...register("password")}
                 type="password"
                 label="Password"
@@ -169,7 +167,7 @@ const UserForm: React.FC<UserFormProps> = ({ initialData }) => {
             </div>
 
             <div className="flex flex-col gap-y-1 w-1/2">
-              <Input endContent={<FaLock {...iconStyle} />}
+              <Input endContent={<LuLock {...iconStyle} />}
                 {...register("confirmPassword")}
                 type="password"
                 label="Confirm password"

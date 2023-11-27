@@ -1,7 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FaEnvelope, FaLock } from "react-icons/fa";
+import { LuMail, LuLock } from "react-icons/lu";
 import { useRouter } from "next/navigation";
 import { Input } from "@nextui-org/react";
 import { useForm } from "react-hook-form";
@@ -65,7 +65,7 @@ const LoginForm = () => {
     <form className="flex flex-col w-full py-3" onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col gap-y-3 mb-[18px]">
         <div className="flex flex-col gap-y-1">
-          <Input endContent={<FaEnvelope {...iconStyle} />}
+          <Input endContent={<LuMail {...iconStyle} />}
             {...register("email")}
             name="email"
             label="Email"
@@ -77,7 +77,7 @@ const LoginForm = () => {
         </div>
 
         <div className="flex flex-col gap-y-1">
-          <Input endContent={<FaLock {...iconStyle} />}
+          <Input endContent={<LuLock {...iconStyle} />}
             {...register("password")}
             type="password"
             name="password"
@@ -97,5 +97,5 @@ const LoginForm = () => {
       </Button>
     </form>
   );
-};
+}
 export default LoginForm;
