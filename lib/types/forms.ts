@@ -14,6 +14,7 @@ export const loginFormSchema = z.object({
     .max(70, "E-mail must be shorter than 70 characters")
     .email("Invalid e-mail")
     .toLowerCase(),
+
   password: z
     .string()
     .trim()
@@ -32,6 +33,7 @@ export const categoryFormSchema = z.object({
     .min(1, "Name is required")
     .min(5, "Name must have atleast 5 characters")
     .max(70, "Name must be shorter than 70 characters"),
+
   description: z
     .string()
     .trim()
@@ -39,6 +41,23 @@ export const categoryFormSchema = z.object({
     .optional()
 });
 export type categoryFormData = z.infer<typeof categoryFormSchema>;
+
+export const brandFormSchema = z.object({
+  name: z
+    .string()
+    .trim()
+    .min(1, "Name is required")
+    .min(5, "Name must have atleast 5 characters")
+    .max(70, "Name must be shorter than 70 characters"),
+
+  manufacturer: z
+    .string()
+    .trim()
+    .min(1, "Manufacturer is required")
+    .min(5, "Manufacturer must have atleast 5 characters")
+    .max(70, "Manufacturer must be shorter than 70 characters")
+});
+export type brandFormData = z.infer<typeof brandFormSchema>;
 
 
 //! MASTER
@@ -77,7 +96,7 @@ export const userFormSchema = z
       .trim()
       .min(1, "Password confirmation is required")
       .min(8, "Password confirmation must have atleast 8 characters")
-      .max(30, "Password confirmation must be shorter than 30 characters"),
+      .max(30, "Password confirmation must be shorter than 30 characters")
   })
   .refine(({ password, confirmPassword }) => password === confirmPassword, {
     message: "Password does not match",
