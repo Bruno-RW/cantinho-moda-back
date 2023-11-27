@@ -72,7 +72,7 @@ html.dark .navbar-li:hover .link-after {
 
 
 /* Smartphone */
-@media (min-height:624px) {
+@media (min-height:560px) {
   .navbar-li:nth-child(6) {
     margin-bottom: calc(100vh - 560px);
   }
