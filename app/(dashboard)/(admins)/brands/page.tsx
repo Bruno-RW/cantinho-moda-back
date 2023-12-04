@@ -10,7 +10,7 @@ const BrandsPage = async () => {
   const formattedBrands: BrandsColumnsProps[] = brands.map(brand => ({
     id: brand.id,
     name: brand.name,
-    description: brand.manufacturer,
+    manufacturer: brand.manufacturer,
     createdAt: formatDateTime(brand.createdAt),
     updatedAt: formatDateTime(brand.updatedAt)
   }));
