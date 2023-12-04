@@ -48,14 +48,14 @@ export const brandFormSchema = z.object({
     .string()
     .trim()
     .min(1, "Name is required")
-    .min(5, "Name must have atleast 5 characters")
+    .min(3, "Name must have atleast 5 characters")
     .max(70, "Name must be shorter than 70 characters"),
 
   manufacturer: z
     .string()
     .trim()
     .min(1, "Manufacturer is required")
-    .min(5, "Manufacturer must have atleast 5 characters")
+    .min(3, "Manufacturer must have atleast 5 characters")
     .max(70, "Manufacturer must be shorter than 70 characters")
 });
 export type brandFormData = z.infer<typeof brandFormSchema>;
