@@ -5,7 +5,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 const buttonStyles = cva(
-  "h-10 p-2 rounded-lg transition-transform-opacity active:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4",
+  "items-center h-10 p-2 rounded-lg transition-transform-opacity active:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4",
   {
     variants: {
       variant: {
