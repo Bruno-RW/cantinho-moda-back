@@ -11,7 +11,7 @@ import axios from "axios";
 import { BsDiagram3 } from "react-icons/bs";
 import { LuTrash } from "react-icons/lu";
 
-import { User } from "@prisma/client";
+import { Category } from "@prisma/client";
 
 import { iconStyle, categoryFormData, categoryFormSchema } from "@/lib/types/forms";
 import useToastStyle from "@/hooks/useToastStyle";
@@ -22,7 +22,7 @@ import AlertModal from "@/components/modals/AlertModal";
 import Heading from "@/components/ui/custom/Heading";
 import Button from "@/components/ui/custom/Button";
 
-interface CategoryFormProps { initialData?: User | null };
+interface CategoryFormProps { initialData?: Category | null };
 
 const CategoryForm: React.FC<CategoryFormProps> = ({ initialData }) => {
   const router = useRouter();
@@ -35,7 +35,7 @@ const CategoryForm: React.FC<CategoryFormProps> = ({ initialData }) => {
   const description  = initialData ? "Edit category" : "New category";
   const toastMessage = initialData ? "Category updated" : "Category created";
   const submitLabel  = initialData ? (isLoading ? "Saving..." : "Save") : (isLoading ? "Creating..." : "Create");
-  
+
   const { handleSubmit, register, reset, setFocus, formState: {errors} } = useForm<categoryFormData>({
     resolver: zodResolver(categoryFormSchema),
     defaultValues: initialData || {

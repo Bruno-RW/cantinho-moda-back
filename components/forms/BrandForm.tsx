@@ -11,7 +11,7 @@ import axios from "axios";
 import { BsBookmarks, BsBuilding } from "react-icons/bs";
 import { LuTrash } from "react-icons/lu";
 
-import { User } from "@prisma/client";
+import { Brand } from "@prisma/client";
 
 import { iconStyle, brandFormData, brandFormSchema } from "@/lib/types/forms";
 import useToastStyle from "@/hooks/useToastStyle";
@@ -22,7 +22,7 @@ import AlertModal from "@/components/modals/AlertModal";
 import Heading from "@/components/ui/custom/Heading";
 import Button from "@/components/ui/custom/Button";
 
-interface BrandFormProps { initialData?: User | null };
+interface BrandFormProps { initialData?: Brand | null };
 
 const BrandForm: React.FC<BrandFormProps> = ({ initialData }) => {
   const router = useRouter();
