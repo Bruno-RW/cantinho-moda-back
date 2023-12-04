@@ -113,7 +113,7 @@ const BrandForm: React.FC<BrandFormProps> = ({ initialData }) => {
                 isRequired
                 autoFocus
               />
-                {errors.name && <ErrorMessage className="ml-2" message={errors.name.message} />}
+                {errors.name && <ErrorMessage message={errors.name.message} />}
             </div>
     
             <div className="flex flex-col gap-y-1 w-1/2">
@@ -123,7 +123,7 @@ const BrandForm: React.FC<BrandFormProps> = ({ initialData }) => {
                 variant="bordered"
                 isRequired
               />
-                {errors.manufacturer && <ErrorMessage className="ml-2" message={errors.manufacturer.message} />}
+                {errors.manufacturer && <ErrorMessage message={errors.manufacturer.message} />}
             </div>
           </div>
 
