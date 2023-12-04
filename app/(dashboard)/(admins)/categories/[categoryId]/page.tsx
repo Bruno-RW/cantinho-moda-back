@@ -2,9 +2,9 @@ import db from "@/lib/db";
 
 import CategoryForm from "@/components/forms/CategoryForm";
 
-const EditUserPage = async ({ params }: { params: { categoryId: string } }) => {
-  const user = await db.user.findUnique({ where: { id: Number(params.categoryId) } });
+const EditCategoryPage = async ({ params }: { params: { categoryId: string } }) => {
+  const category = await db.category.findUnique({ where: { id: Number(params.categoryId) } });
 
-  return <CategoryForm initialData={user} />;
+  return <CategoryForm initialData={category} />;
 }
-export default EditUserPage;
+export default EditCategoryPage;
