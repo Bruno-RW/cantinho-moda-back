@@ -38,6 +38,7 @@ export const categoryFormSchema = z.object({
     .string()
     .trim()
     .max(255, "Description must be shorter than 255 characters")
+    .nullable()
     .optional()
 });
 export type categoryFormData = z.infer<typeof categoryFormSchema>;
