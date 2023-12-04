@@ -122,7 +122,6 @@ const BrandForm: React.FC<BrandFormProps> = ({ initialData }) => {
                 label="Manufacturer"
                 variant="bordered"
                 isRequired
-                autoFocus
               />
                 {errors.manufacturer && <ErrorMessage className="ml-2" message={errors.manufacturer.message} />}
             </div>
