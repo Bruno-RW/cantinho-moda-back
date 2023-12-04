@@ -73,7 +73,7 @@ const LoginForm = () => {
             autoComplete="email"
             autoFocus
           />
-          {errors.email && <ErrorMessage className="ml-2" message={errors.email.message} />}
+          {errors.email && <ErrorMessage message={errors.email.message} />}
         </div>
 
         <div className="flex flex-col gap-y-1">
@@ -84,7 +84,7 @@ const LoginForm = () => {
             label="Password"
             variant="bordered"
           />
-          {errors.password && <ErrorMessage className="ml-2" message={errors.password.message} />}
+          {errors.password && <ErrorMessage message={errors.password.message} />}
         </div>
       </div>
 

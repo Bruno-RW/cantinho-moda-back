@@ -112,7 +112,7 @@ const CategoryForm: React.FC<CategoryFormProps> = ({ initialData }) => {
               isRequired
               autoFocus
             />
-              {errors.name && <ErrorMessage className="ml-2" message={errors.name.message} />}
+              {errors.name && <ErrorMessage message={errors.name.message} />}
           </div>
   
           <div className="flex flex-col gap-y-1 w-full">
@@ -123,7 +123,7 @@ const CategoryForm: React.FC<CategoryFormProps> = ({ initialData }) => {
               disableAutosize
               rows={5}
             />
-              {errors.description && <ErrorMessage className="ml-2" message={errors.description.message} />}
+              {errors.description && <ErrorMessage message={errors.description.message} />}
           </div>
 
           <Button className={cn("w-1/4", isLoading && "bg-blue-600/70 dark:bg-blue-500/40")} type="submit" variant="blue" isLoading={isLoading}>{submitLabel}</Button>

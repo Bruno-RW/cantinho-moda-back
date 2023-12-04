@@ -127,7 +127,7 @@ const UserForm: React.FC<UserFormProps> = ({ initialData }) => {
                 isRequired
                 autoFocus
               />
-              {errors.name && <ErrorMessage className="ml-2" message={errors.name.message} />}
+              {errors.name && <ErrorMessage message={errors.name.message} />}
             </div>
 
             <div className="flex flex-col gap-y-1 w-1/2">
@@ -140,7 +140,7 @@ const UserForm: React.FC<UserFormProps> = ({ initialData }) => {
               >
                 {type => <SelectItem key={type.value}>{type.label}</SelectItem>}
               </Select>
-              {errors.type && <ErrorMessage className="ml-2" message={errors.type.message} />}
+              {errors.type && <ErrorMessage message={errors.type.message} />}
             </div>
           </div>
 
@@ -151,7 +151,7 @@ const UserForm: React.FC<UserFormProps> = ({ initialData }) => {
               variant="bordered"
               isRequired
             />
-            {errors.email && <ErrorMessage className="ml-2" message={errors.email.message} />}
+            {errors.email && <ErrorMessage message={errors.email.message} />}
           </div>
 
           <div className="flex gap-x-3">
@@ -163,7 +163,7 @@ const UserForm: React.FC<UserFormProps> = ({ initialData }) => {
                 variant="bordered"
                 isRequired
               />
-              {errors.password && <ErrorMessage className="ml-2" message={errors.password.message} />}
+              {errors.password && <ErrorMessage message={errors.password.message} />}
             </div>
 
             <div className="flex flex-col gap-y-1 w-1/2">
@@ -174,7 +174,7 @@ const UserForm: React.FC<UserFormProps> = ({ initialData }) => {
                 variant="bordered"
                 isRequired
               />
-              {errors.confirmPassword && <ErrorMessage className="ml-2" message={errors.confirmPassword.message} />}
+              {errors.confirmPassword && <ErrorMessage message={errors.confirmPassword.message} />}
             </div>
           </div>
 
