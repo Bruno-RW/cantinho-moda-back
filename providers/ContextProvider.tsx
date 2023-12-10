@@ -12,13 +12,13 @@ const ContextProvider = ({ children }: { children: React.ReactNode }) => {
     <SessionProvider>
       <NextUIProvider>
         <ThemeContextProvider>
-          <NavbarContextProvider>
-            <Toaster position="top-center" toastOptions={{duration: 3000}} />
-            {children}
-          </NavbarContextProvider>
+            <NavbarContextProvider>
+              <Toaster position="top-center" toastOptions={{duration: 3000}} />
+              {children}
+            </NavbarContextProvider>
         </ThemeContextProvider>
       </NextUIProvider>
     </SessionProvider>
   );
-};
+}
 export default ContextProvider;

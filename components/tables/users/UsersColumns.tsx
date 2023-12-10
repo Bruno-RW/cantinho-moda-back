@@ -16,7 +16,7 @@ export type UsersColumnsProps = {
   updatedAt: string;
 };
 
-const centered = (text: string | number) => <div className="text-center">{text}</div>
+const centered = (text: string | number) => <div className="text-center">{text}</div>;
 
 export const UsersColumns: ColumnDef<UsersColumnsProps>[] = [
   {

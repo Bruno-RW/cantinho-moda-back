@@ -59,5 +59,5 @@ const MappedRoutes: React.FC<MappedRoutesProps> = ({ isActive }) => {
       ))}
     </ul>
   );
-};
+}
 export default MappedRoutes;
