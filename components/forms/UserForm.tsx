@@ -12,7 +12,7 @@ import { LuLock, LuMail, LuTrash, LuUnlock, LuUser } from "react-icons/lu";
 
 import { User } from "@prisma/client";
 
-import { iconStyle, userFormData, userFormSchema } from "@/lib/types/forms";
+import { editUserFormSchema, iconStyle, userFormData, userFormSchema } from "@/lib/types/forms";
 import useToastStyle from "@/hooks/useToastStyle";
 import { cn } from "@/lib/utils";
 
@@ -45,18 +45,14 @@ const UserForm: React.FC<UserFormProps> = ({ initialData }) => {
   const toastMessage = initialData ? "User updated" : "User created";
   const submitLabel  = initialData ? (isLoading ? "Saving..." : "Save") : (isLoading ? "Creating..." : "Create");
   
-  const confirmPassword = initialData?.password;
-
-  const { handleSubmit, register, reset, setFocus, formState: {errors} } = useForm<userFormData>({
-    resolver: zodResolver(userFormSchema),
-    defaultValues: { ...initialData, confirmPassword } || {
-      name: "",
-      type: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    },
-  });
+  const { 
+    handleSubmit, 
+    register, 
+    reset, 
+    setFocus, 
+    formState: {errors} 
+  } = initialData ? useForm<userFormData>({ resolver: zodResolver(editUserFormSchema) }) 
+  : useForm<userFormData>({ resolver: zodResolver(userFormSchema) });
 
   const onSubmit = async (data: userFormData) => {
     try {
@@ -122,10 +118,12 @@ const UserForm: React.FC<UserFormProps> = ({ initialData }) => {
             <div className="flex flex-col gap-y-1 w-full">
               <Input endContent={<LuUser {...iconStyle} />}
                 {...register("name")}
+                defaultValue={initialData?.name || ""}
                 label="Name"
                 variant="bordered"
-                isRequired
                 autoFocus
+                autoComplete="new-password"
+                isRequired
               />
               {errors.name && <ErrorMessage message={errors.name.message} />}
             </div>
@@ -133,8 +131,10 @@ const UserForm: React.FC<UserFormProps> = ({ initialData }) => {
             <div className="flex flex-col gap-y-1 w-1/2">
               <Select
                 {...register("type")}
+                defaultSelectedKeys={initialData?.type || ""}
                 label="Type"
                 variant="bordered"
+                autoComplete="new-password"
                 items={userTypes}
                 isRequired
               >
@@ -147,8 +147,10 @@ const UserForm: React.FC<UserFormProps> = ({ initialData }) => {
           <div className="flex flex-col gap-y-1">
             <Input endContent={<LuMail {...iconStyle} />}
               {...register("email")}
+              defaultValue={initialData?.email || ""}
               label="Email"
               variant="bordered"
+              autoComplete="new-password"
               isRequired
             />
             {errors.email && <ErrorMessage message={errors.email.message} />}
@@ -158,10 +160,12 @@ const UserForm: React.FC<UserFormProps> = ({ initialData }) => {
             <div className="flex flex-col gap-y-1 w-1/2">
               <Input endContent={<LuUnlock {...iconStyle} />}
                 {...register("password")}
+                // defaultValue={initialData?.password || ""}
                 type="password"
                 label="Password"
                 variant="bordered"
-                isRequired
+                autoComplete="new-password"
+                isRequired={!initialData}
               />
               {errors.password && <ErrorMessage message={errors.password.message} />}
             </div>
@@ -169,10 +173,12 @@ const UserForm: React.FC<UserFormProps> = ({ initialData }) => {
             <div className="flex flex-col gap-y-1 w-1/2">
               <Input endContent={<LuLock {...iconStyle} />}
                 {...register("confirmPassword")}
+                // defaultValue={initialData?.password || ""}
                 type="password"
                 label="Confirm password"
                 variant="bordered"
-                isRequired
+                autoComplete="new-password"
+                isRequired={!initialData}
               />
               {errors.confirmPassword && <ErrorMessage message={errors.confirmPassword.message} />}
             </div>
