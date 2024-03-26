@@ -36,13 +36,13 @@ const BrandForm: React.FC<BrandFormProps> = ({ initialData }) => {
   const toastMessage = initialData ? "Brand updated" : "Brand created";
   const submitLabel  = initialData ? (isLoading ? "Saving..." : "Save") : (isLoading ? "Creating..." : "Create");
   
-  const { handleSubmit, register, reset, setFocus, formState: {errors} } = useForm<brandFormData>({
-    resolver: zodResolver(brandFormSchema),
-    defaultValues: initialData || {
-      name: "",
-      manufacturer: "",
-    },
-  });
+  const { 
+    handleSubmit, 
+    register, 
+    reset, 
+    setFocus, 
+    formState: {errors} 
+  } = useForm<brandFormData>({ resolver: zodResolver(brandFormSchema) });
 
   const onSubmit = async (data: brandFormData) => {
     try {
@@ -108,8 +108,10 @@ const BrandForm: React.FC<BrandFormProps> = ({ initialData }) => {
             <div className="flex flex-col gap-y-1 w-1/2">
               <Input endContent={<BsBookmarks {...iconStyle} />}
                 {...register("name")}
+                defaultValue={initialData?.name || ""}
                 label="Name"
                 variant="bordered"
+                autoComplete="new-password"
                 isRequired
                 autoFocus
               />
@@ -119,8 +121,10 @@ const BrandForm: React.FC<BrandFormProps> = ({ initialData }) => {
             <div className="flex flex-col gap-y-1 w-1/2">
               <Input endContent={<BsBuilding {...iconStyle} />}
                 {...register("manufacturer")}
+                defaultValue={initialData?.manufacturer || ""}
                 label="Manufacturer"
                 variant="bordered"
+                autoComplete="new-password"
                 isRequired
               />
                 {errors.manufacturer && <ErrorMessage message={errors.manufacturer.message} />}

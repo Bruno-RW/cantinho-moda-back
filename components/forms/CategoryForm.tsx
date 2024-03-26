@@ -36,13 +36,13 @@ const CategoryForm: React.FC<CategoryFormProps> = ({ initialData }) => {
   const toastMessage = initialData ? "Category updated" : "Category created";
   const submitLabel  = initialData ? (isLoading ? "Saving..." : "Save") : (isLoading ? "Creating..." : "Create");
 
-  const { handleSubmit, register, reset, setFocus, formState: {errors} } = useForm<categoryFormData>({
-    resolver: zodResolver(categoryFormSchema),
-    defaultValues: initialData || {
-      name: "",
-      description: "",
-    },
-  });
+  const { 
+    handleSubmit, 
+    register, 
+    reset, 
+    setFocus, 
+    formState: {errors} 
+  } = useForm<categoryFormData>({ resolver: zodResolver(categoryFormSchema) });
 
   const onSubmit = async (data: categoryFormData) => {
     try {
@@ -107,8 +107,10 @@ const CategoryForm: React.FC<CategoryFormProps> = ({ initialData }) => {
           <div className="flex flex-col gap-y-1 w-full">
             <Input endContent={<BsDiagram3 {...iconStyle} />}
               {...register("name")}
+              defaultValue={initialData?.name || ""}
               label="Name"
               variant="bordered"
+              autoComplete="new-password"
               isRequired
               autoFocus
             />
@@ -118,8 +120,10 @@ const CategoryForm: React.FC<CategoryFormProps> = ({ initialData }) => {
           <div className="flex flex-col gap-y-1 w-full">
             <Textarea classNames={{ input: "resize-y min-h-[40px]" }}
               {...register("description")}
+              defaultValue={initialData?.description || ""}
               label="Description"
               variant="bordered"
+              autoComplete="new-password"
               disableAutosize
               rows={5}
             />
