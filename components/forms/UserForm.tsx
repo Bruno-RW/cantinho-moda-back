@@ -160,7 +160,6 @@ const UserForm: React.FC<UserFormProps> = ({ initialData }) => {
             <div className="flex flex-col gap-y-1 w-1/2">
               <Input endContent={<LuUnlock {...iconStyle} />}
                 {...register("password")}
-                // defaultValue={initialData?.password || ""}
                 type="password"
                 label="Password"
                 variant="bordered"
@@ -173,7 +172,6 @@ const UserForm: React.FC<UserFormProps> = ({ initialData }) => {
             <div className="flex flex-col gap-y-1 w-1/2">
               <Input endContent={<LuLock {...iconStyle} />}
                 {...register("confirmPassword")}
-                // defaultValue={initialData?.password || ""}
                 type="password"
                 label="Confirm password"
                 variant="bordered"

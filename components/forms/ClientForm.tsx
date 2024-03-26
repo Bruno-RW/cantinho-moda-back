@@ -12,7 +12,7 @@ import { LuLock, LuMail, LuTrash, LuUnlock, LuUser } from "react-icons/lu";
 
 import { Client } from "@prisma/client";
 
-import { iconStyle, clientFormData, clientFormSchema } from "@/lib/types/forms";
+import { iconStyle, clientFormData, clientFormSchema, editClientFormSchema } from "@/lib/types/forms";
 import useToastStyle from "@/hooks/useToastStyle";
 import { cn } from "@/lib/utils";
 
@@ -35,17 +35,14 @@ const ClientForm: React.FC<ClientFormProps> = ({ initialData }) => {
   const toastMessage = initialData ? "Client updated" : "Client created";
   const submitLabel  = initialData ? (isLoading ? "Saving..." : "Save") : (isLoading ? "Creating..." : "Create");
   
-  const confirmPassword = initialData?.password;
-
-  const { handleSubmit, register, reset, setFocus, formState: {errors} } = useForm<clientFormData>({
-    resolver: zodResolver(clientFormSchema),
-    defaultValues: { ...initialData, confirmPassword } || {
-      name: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    },
-  });
+  const { 
+    handleSubmit, 
+    register, 
+    reset, 
+    setFocus, 
+    formState: {errors} 
+  } = initialData ? useForm<clientFormData>({ resolver: zodResolver(editClientFormSchema) }) 
+  : useForm<clientFormData>({ resolver: zodResolver(clientFormSchema) });
 
   const onSubmit = async (data: clientFormData) => {
     try {
@@ -111,8 +108,10 @@ const ClientForm: React.FC<ClientFormProps> = ({ initialData }) => {
             <div className="flex flex-col gap-y-1 w-2/5">
               <Input endContent={<LuUser {...iconStyle} />}
                 {...register("name")}
+                defaultValue={initialData?.name || ""}
                 label="Name"
                 variant="bordered"
+                autoComplete="new-password"
                 isRequired
                 autoFocus
               />
@@ -122,8 +121,10 @@ const ClientForm: React.FC<ClientFormProps> = ({ initialData }) => {
             <div className="flex flex-col gap-y-1 w-3/5">
               <Input endContent={<LuMail {...iconStyle} />}
                 {...register("email")}
+                defaultValue={initialData?.email || ""}
                 label="Email"
                 variant="bordered"
+                autoComplete="new-password"
                 isRequired
               />
               {errors.email && <ErrorMessage message={errors.email.message} />}
@@ -138,7 +139,8 @@ const ClientForm: React.FC<ClientFormProps> = ({ initialData }) => {
                 type="password"
                 label="Password"
                 variant="bordered"
-                isRequired
+                autoComplete="new-password"
+                isRequired={!initialData}
               />
               {errors.password && <ErrorMessage message={errors.password.message} />}
             </div>
@@ -149,7 +151,8 @@ const ClientForm: React.FC<ClientFormProps> = ({ initialData }) => {
                 type="password"
                 label="Confirm password"
                 variant="bordered"
-                isRequired
+                autoComplete="new-password"
+                isRequired={!initialData}
               />
               {errors.confirmPassword && <ErrorMessage message={errors.confirmPassword.message} />}
             </div>

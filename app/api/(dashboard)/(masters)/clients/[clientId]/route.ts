@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { compare, hash } from "bcrypt";
 
 import db from "@/lib/db";
-import { clientFormSchema } from "@/lib/types/forms";
+import { editClientFormSchema } from "@/lib/types/forms";
 
 export async function GET(
   req: Request,
@@ -29,7 +29,7 @@ export async function PATCH(
 ) {
   try {
     const body: unknown = await req.json();
-    const { name, email, password } = clientFormSchema.parse(body);
+    const { name, email, password } = editClientFormSchema.parse(body);
 
     const existingClientById = await db.client.findUnique({ where: { id: Number(params.clientId) } });
 
@@ -39,15 +39,30 @@ export async function PATCH(
 
     if (existingClientByEmail && existingClientByEmail.id !== existingClientById.id) return NextResponse.json("E-mail is already taken", { status: 400 });
 
+    if (!password) {
+      await db.client.update({
+        where: { email },
+        data: {
+          name,
+          email,
+        }
+      });
+
+      return NextResponse.json("Admin user updated successfully", { status: 201 });
+    }
+
     const isSamePassword = await compare(password, existingClientById.password);
+
+    if (isSamePassword) return NextResponse.json("New password must be different than the current password", { status: 400 });
+
     const newHashedPassword = await hash(password, 10);
-  
+
     await db.client.update({
       where: { email },
       data: {
         name,
         email,
-        password: isSamePassword ? password : newHashedPassword,
+        password: newHashedPassword,
       }
     });
 
