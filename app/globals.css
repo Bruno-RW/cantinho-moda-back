@@ -50,23 +50,17 @@ h3 {
 
 
 /* ----- NAVBAR ----- */
-.navbar-li {
-  @apply relative ml-3.5 rounded-l-full list-none border border-transparent transition-transform 
-  hover:bg-gray-50 hover:translate-x-3 hover:pl-4 hover:transition-none 
-  dark:hover:bg-neutral-900;
-}
-
-.navbar-li:hover .link-before {
+.navbar-li.active .span-before {
   box-shadow: 35px 35px 0 10px rgb(249 250 251);
 }
-html.dark .navbar-li:hover .link-before {
+html.dark .navbar-li.active .span-before {
   box-shadow: 35px 35px 0 10px rgb(23 23 23);
 }
 
-.navbar-li:hover .link-after {
+.navbar-li.active .span-after {
   box-shadow: 35px -35px 0 10px rgb(249 250 251);
 }
-html.dark .navbar-li:hover .link-after {
+html.dark .navbar-li.active .span-after {
   box-shadow: 35px -35px 0 10px rgb(23 23 23);
 }
 
