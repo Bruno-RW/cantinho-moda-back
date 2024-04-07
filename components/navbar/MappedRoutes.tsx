@@ -4,6 +4,7 @@ import { signOut, useSession } from "next-auth/react";
 import toast from "react-hot-toast";
 import Link from "next/link";
 
+import useToastStyle from "@/hooks/useToastStyle";
 import { navbarInfo } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
@@ -14,6 +15,8 @@ interface MappedRoutesProps { isActive: boolean };
 
 const MappedRoutes: React.FC<MappedRoutesProps> = ({ isActive }) => {
   const { data: session } = useSession();
+  const { toastStyle } = useToastStyle();
+
   const isMaster = session?.user.type === "M";
   
   const pathName = usePathname();
@@ -21,7 +24,7 @@ const MappedRoutes: React.FC<MappedRoutesProps> = ({ isActive }) => {
   const onClick = (item: any) => {
     if (item.signOut) signOut();
 
-    if (!isMaster && item.type === "M") toast.error("Unauthorized");
+    if (!isMaster && item.type === "M") toast.error("Unauthorized", toastStyle);
   };
 
   return (
