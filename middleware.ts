@@ -1,28 +1,24 @@
 import { NextRequestWithAuth, withAuth } from "next-auth/middleware";
 import { NextResponse } from "next/server";
 
+interface RoutePermissions {
+  [key: string]: string | null;
+};
+
+const routePermissions: RoutePermissions = {
+  "/api": null,
+  "/api/users": "M",
+  "/api/clients": "M",
+  "/users": "M",
+  "/clients": "M"
+};
+
 export default withAuth(
   function middleware(request: NextRequestWithAuth) {
-    //* API ROUTES
-    if (request.nextUrl.pathname.startsWith("/api") && !request.nextauth.token?.type) {
-      return NextResponse.redirect( new URL("/", request.url) );
-    }
+    const path = Object.keys(routePermissions).find(key => request.nextUrl.pathname.startsWith(key));
 
-    if (request.nextUrl.pathname.startsWith("/api/users") && request.nextauth.token?.type !== "M") {
-      return NextResponse.redirect( new URL("/", request.url) );
-    }
-
-    if (request.nextUrl.pathname.startsWith("/api/clients") && request.nextauth.token?.type !== "M") {
-      return NextResponse.redirect( new URL("/", request.url) );
-    }
-
-    //* DASHBOARD ROUTES
-    if (request.nextUrl.pathname.startsWith("/users") && request.nextauth.token?.type !== "M") {
-      return NextResponse.redirect( new URL("/", request.url) );
-    }
-
-    if (request.nextUrl.pathname.startsWith("/clients") && request.nextauth.token?.type !== "M") {
-      return NextResponse.redirect( new URL("/", request.url) );
+    if ( path && (!request.nextauth.token?.type || request.nextauth.token.type !== routePermissions[path]) ) {
+      return NextResponse.redirect(new URL("/", request.url));
     }
 
     const origin = request.nextUrl.origin;
