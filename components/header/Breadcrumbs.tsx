@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import { Fragment } from "react";
 import { usePathname } from "next/navigation";
 import { IoIosArrowForward } from "react-icons/io";
 
 import { capitalize } from "@/lib/utils";
-import { Fragment } from "react";
 
 const Breadcrumbs = () => {
   const pathname = usePathname();

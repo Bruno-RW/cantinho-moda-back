@@ -7,9 +7,9 @@ const DashboardPage = () => {
   useEffect(() => toast.remove(), []);
 
   return (
-    <main className="flex flex-col">
+    <div className="flex flex-col">
       Dashboard page
-    </main>
+    </div>
   );
 }
 export default DashboardPage;
